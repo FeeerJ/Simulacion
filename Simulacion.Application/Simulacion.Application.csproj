@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dtos\GeneracionRequestDto.cs" />
+    <Compile Remove="Dtos\GeneracionResponseDto.cs" />
     <Compile Remove="Services\CongruencialService.cs" />
     <Compile Remove="Services\NoLinealService.cs" />
     <Compile Remove="Services\SimulacionService.cs" />
