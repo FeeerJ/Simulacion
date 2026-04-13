@@ -65,3 +65,44 @@ C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion\obj\Debug\net8.0\Simulacio
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.genruntimeconfig.cache
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion\obj\Debug\net8.0\ref\Simulacion.dll
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.sourcelink.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\appsettings.Development.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\appsettings.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Simulacion.staticwebassets.endpoints.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Simulacion.exe
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Simulacion.deps.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Simulacion.runtimeconfig.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Simulacion.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Simulacion.pdb
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Simulacion.Application.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Simulacion.Domain.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Simulacion.Application.pdb
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\bin\Debug\net8.0\Simulacion.Domain.pdb
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.csproj.AssemblyReference.cache
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\rpswa.dswa.cache.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.GeneratedMSBuildEditorConfig.editorconfig
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.AssemblyInfoInputs.cache
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.AssemblyInfo.cs
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.csproj.CoreCompileInputs.cache
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.MvcApplicationPartsAssemblyInfo.cs
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.MvcApplicationPartsAssemblyInfo.cache
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.sourcelink.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\rjimswa.dswa.cache.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\scopedcss\bundle\Simulacion.styles.css
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\staticwebassets.build.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\staticwebassets.build.json.cache
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\staticwebassets.development.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\swae.build.ex.cache
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.csproj.Up2Date
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\refint\Simulacion.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.pdb
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.genruntimeconfig.cache
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion\obj\Debug\net8.0\ref\Simulacion.dll
