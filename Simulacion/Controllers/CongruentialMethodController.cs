@@ -30,4 +30,11 @@ public class CongruentialMethodController : ControllerBase
         var result = _congruentialService.GenerateMultiplicative(request.M, request.N0, request.A, request.TotalNumeros);
         return Ok(result);
     }
+
+    [HttpPost("mixedCongruential")]
+    public IActionResult GetMixedCongruential([FromBody] MixedCongruentialModel request)
+    {
+        var result = _congruentialService.GenerateMixed(request.M, request.N0, request.A, request.C, request.TotalNumeros);
+        return Ok(result);
+    }
 }

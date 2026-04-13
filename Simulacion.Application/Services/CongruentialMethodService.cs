@@ -51,4 +51,25 @@ public class CongruentialMethodService
 
         return resultados;
     }
+
+    public IEnumerable<double> GenerateMixed(long M, long N0, long A, long C, int Total)
+    {
+        var valores = new List<long>();
+        var resultados = new List<double>();
+
+        valores.Add(N0);
+
+        for (var i = 1; i < Total + 1; i++)
+        {
+            long n = (A * valores[i - 1] + C) % M;
+            valores.Add(n);
+        }
+
+        foreach (var v in valores)
+        {
+            resultados.Add((double)v / M);
+        }
+
+        return resultados;
+    }
 }

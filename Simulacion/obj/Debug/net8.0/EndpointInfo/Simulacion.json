@@ -67,6 +67,37 @@
         }
       }
     },
+    "/api/simuladores/mixedCongruential": {
+      "post": {
+        "tags": [
+          "CongruentialMethod"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MixedCongruentialModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MixedCongruentialModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MixedCongruentialModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/simuladores/Lehmer": {
       "post": {
         "tags": [
@@ -188,6 +219,32 @@
             "format": "int32"
           },
           "tot": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MixedCongruentialModel": {
+        "type": "object",
+        "properties": {
+          "m": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "n0": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "a": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "c": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalNumeros": {
             "type": "integer",
             "format": "int32"
           }

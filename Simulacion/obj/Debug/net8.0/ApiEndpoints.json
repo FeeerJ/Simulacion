@@ -49,6 +49,22 @@
   },
   {
     "ContainingType": "Simulacion.Controllers.CongruentialMethodController",
+    "Method": "GetMixedCongruential",
+    "RelativePath": "api/simuladores/mixedCongruential",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Simulacion.Application.Dtos.MixedCongruentialModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.CongruentialMethodController",
     "Method": "GetMultiplicativeCongruential",
     "RelativePath": "api/simuladores/multiplicativeCongruential",
     "HttpMethod": "POST",
