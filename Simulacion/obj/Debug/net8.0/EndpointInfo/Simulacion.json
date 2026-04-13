@@ -8,7 +8,7 @@
     "/api/simuladores/additiveCongruential": {
       "post": {
         "tags": [
-          "AdditiveCongruential"
+          "CongruentialMethod"
         ],
         "requestBody": {
           "content": {
@@ -25,6 +25,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/AdditiveCongruentialModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/simuladores/multiplicativeCongruential": {
+      "post": {
+        "tags": [
+          "CongruentialMethod"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MultiplicativeCongruentialModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MultiplicativeCongruentialModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MultiplicativeCongruentialModel"
               }
             }
           }
@@ -157,6 +188,28 @@
             "format": "int32"
           },
           "tot": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MultiplicativeCongruentialModel": {
+        "type": "object",
+        "properties": {
+          "m": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "n0": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "a": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalNumeros": {
             "type": "integer",
             "format": "int32"
           }

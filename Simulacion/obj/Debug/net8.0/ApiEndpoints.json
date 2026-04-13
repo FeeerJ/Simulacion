@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "Simulacion.Controllers.AdditiveCongruentialController",
+    "ContainingType": "Simulacion.Controllers.CongruentialMethodController",
     "Method": "GetAdditiveCongruential",
     "RelativePath": "api/simuladores/additiveCongruential",
     "HttpMethod": "POST",
@@ -42,6 +42,22 @@
       {
         "Name": "request",
         "Type": "Simulacion.Application.Dtos.LehmerRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.CongruentialMethodController",
+    "Method": "GetMultiplicativeCongruential",
+    "RelativePath": "api/simuladores/multiplicativeCongruential",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Simulacion.Application.Dtos.MultiplicativeCongruentialModel",
         "IsRequired": true
       }
     ],
