@@ -46,7 +46,7 @@ namespace Simulacion.Application.Services
 
                 // Para el número pseudoaleatorio, normalizamos (u_i)
                 // Usualmente se divide por el valor máximo posible o se trata según el libro
-                resultados.Add(Math.Abs(m) / Math.Pow(10, k));
+                resultados.Add(m);
             }
             return resultados;
         }

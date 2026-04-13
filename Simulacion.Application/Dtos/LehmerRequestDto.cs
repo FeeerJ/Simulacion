@@ -8,10 +8,10 @@ namespace Simulacion.Application.Dtos
 {
     public class LehmerRequestDto
     {
-        public long seed { get; set; }
-        public long constante { get; set; }
-        public int digitos { get; set; }
-        public int amount { get; set; }
+        public long n0 { get; set; }
+        public long t { get; set; }
+        public int k { get; set; }
+        public int n { get; set; }
 
     }
 }

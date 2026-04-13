@@ -73,19 +73,19 @@
       "LehmerRequestDto": {
         "type": "object",
         "properties": {
-          "seed": {
+          "n0": {
             "type": "integer",
             "format": "int64"
           },
-          "constante": {
+          "t": {
             "type": "integer",
             "format": "int64"
           },
-          "digitos": {
+          "k": {
             "type": "integer",
             "format": "int32"
           },
-          "amount": {
+          "n": {
             "type": "integer",
             "format": "int32"
           }

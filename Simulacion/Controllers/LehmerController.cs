@@ -24,10 +24,10 @@ namespace Simulacion.Controllers
         public IActionResult GetLehmer([FromBody] LehmerRequestDto request)
         {
             var result = _lehmerService.GenerarLehmerDesplazamiento(
-                request.seed,
-                request.constante,
-                request.digitos,
-                request.amount);
+                request.n0,
+                request.t,
+                request.k,
+                request.n);
             return Ok(result);
         }
 

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F70D08CF-76FE-4C66-9534-15EEC34A7DC4}|Simulacion\\Simulacion.csproj|c:\\users\\fer_s\\onedrive\\desktop\\simulacion\\simulacion\\controllers\\lehmercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F70D08CF-76FE-4C66-9534-15EEC34A7DC4}|Simulacion\\Simulacion.csproj|solutionrelative:simulacion\\controllers\\lehmercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C31FFACA-91D3-48AC-B5D6-5275C317D032}|Simulacion.Application\\Simulacion.Application.csproj|c:\\users\\fer_s\\onedrive\\desktop\\simulacion\\simulacion.application\\services\\lehmerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C31FFACA-91D3-48AC-B5D6-5275C317D032}|Simulacion.Application\\Simulacion.Application.csproj|solutionrelative:simulacion.application\\services\\lehmerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F70D08CF-76FE-4C66-9534-15EEC34A7DC4}|Simulacion\\Simulacion.csproj|c:\\users\\fer_s\\onedrive\\desktop\\simulacion\\simulacion\\controllers\\lehmercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F70D08CF-76FE-4C66-9534-15EEC34A7DC4}|Simulacion\\Simulacion.csproj|solutionrelative:simulacion\\controllers\\lehmercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C31FFACA-91D3-48AC-B5D6-5275C317D032}|Simulacion.Application\\Simulacion.Application.csproj|c:\\users\\fer_s\\onedrive\\desktop\\simulacion\\simulacion.application\\dtos\\lehmerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -74,25 +74,24 @@
               "RelativeToolTip": "Simulacion.Application\\Dtos\\LehmerRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T01:13:51.329Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T01:13:51.329Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LehmerService.cs",
               "DocumentMoniker": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion.Application\\Services\\LehmerService.cs",
               "RelativeDocumentMoniker": "Simulacion.Application\\Services\\LehmerService.cs",
               "ToolTip": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion.Application\\Services\\LehmerService.cs",
               "RelativeToolTip": "Simulacion.Application\\Services\\LehmerService.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAA9wBEAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAowDAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T01:11:16.867Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "LehmerController.cs",
               "DocumentMoniker": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion\\Controllers\\LehmerController.cs",
               "RelativeDocumentMoniker": "Simulacion\\Controllers\\LehmerController.cs",
@@ -113,8 +112,7 @@
               "RelativeToolTip": "Simulacion\\Controllers\\GeneradoresController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T00:20:21.695Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T00:20:21.695Z"
             },
             {
               "$type": "Document",
@@ -126,8 +124,7 @@
               "RelativeToolTip": "Simulacion.Application\\Dtos\\MidSquareRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T01:00:50.62Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T01:00:50.62Z"
             },
             {
               "$type": "Document",
@@ -139,8 +136,7 @@
               "RelativeToolTip": "Simulacion.Application\\Services\\MidSquareService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBwAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T00:54:51.206Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T00:54:51.206Z"
             },
             {
               "$type": "Document",
@@ -152,8 +148,7 @@
               "RelativeToolTip": "Simulacion\\Program.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAAwBIAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T00:52:53.237Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T00:52:53.237Z"
             },
             {
               "$type": "Document",
@@ -165,21 +160,19 @@
               "RelativeToolTip": "Simulacion.Domain\\Interfaces\\IGenerador.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T00:36:06.377Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T00:36:06.377Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Simulacion",
+              "Title": "Simulacion.csproj",
               "DocumentMoniker": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion\\Simulacion.csproj",
               "RelativeDocumentMoniker": "Simulacion\\Simulacion.csproj",
               "ToolTip": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion\\Simulacion.csproj",
               "RelativeToolTip": "Simulacion\\Simulacion.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-13T00:52:51.132Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T00:52:51.132Z"
             },
             {
               "$type": "Document",
@@ -190,8 +183,7 @@
               "ToolTip": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion.Application\\Simulacion.Application.csproj",
               "RelativeToolTip": "Simulacion.Application\\Simulacion.Application.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-13T00:51:49.82Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T00:51:49.82Z"
             },
             {
               "$type": "Document",
@@ -203,8 +195,7 @@
               "RelativeToolTip": "Simulacion.Application\\Services\\CongruencialService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T00:49:35.32Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T00:49:35.32Z"
             },
             {
               "$type": "Document",
@@ -216,8 +207,7 @@
               "RelativeToolTip": "Simulacion.Domain\\Entities\\ResultadoGeneracion.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T00:27:45.405Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T00:27:45.405Z"
             },
             {
               "$type": "Document",
@@ -229,8 +219,7 @@
               "RelativeToolTip": "Simulacion.Domain\\Interfaces\\IGeneradorLineal.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T00:17:17.544Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T00:17:17.544Z"
             }
           ]
         }

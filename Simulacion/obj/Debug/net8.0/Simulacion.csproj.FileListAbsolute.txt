@@ -64,3 +64,4 @@ C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion\obj\Debug\net8.0\staticweb
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.csproj.Up2Date
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.genruntimeconfig.cache
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion\obj\Debug\net8.0\ref\Simulacion.dll
+C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion\obj\Debug\net8.0\Simulacion.sourcelink.json

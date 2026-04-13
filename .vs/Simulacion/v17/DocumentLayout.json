@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{F70D08CF-76FE-4C66-9534-15EEC34A7DC4}|Simulacion\\Simulacion.csproj|solutionrelative:simulacion\\controllers\\lehmercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C31FFACA-91D3-48AC-B5D6-5275C317D032}|Simulacion.Application\\Simulacion.Application.csproj|c:\\users\\fer_s\\onedrive\\desktop\\simulacion\\simulacion.application\\services\\lehmerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C31FFACA-91D3-48AC-B5D6-5275C317D032}|Simulacion.Application\\Simulacion.Application.csproj|solutionrelative:simulacion.application\\services\\lehmerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C31FFACA-91D3-48AC-B5D6-5275C317D032}|Simulacion.Application\\Simulacion.Application.csproj|c:\\users\\fer_s\\onedrive\\desktop\\simulacion\\simulacion.application\\dtos\\lehmerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C31FFACA-91D3-48AC-B5D6-5275C317D032}|Simulacion.Application\\Simulacion.Application.csproj|solutionrelative:simulacion.application\\dtos\\lehmerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C31FFACA-91D3-48AC-B5D6-5275C317D032}|Simulacion.Application\\Simulacion.Application.csproj|c:\\users\\fer_s\\onedrive\\desktop\\simulacion\\simulacion.application\\services\\lehmerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C31FFACA-91D3-48AC-B5D6-5275C317D032}|Simulacion.Application\\Simulacion.Application.csproj|solutionrelative:simulacion.application\\services\\lehmerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F70D08CF-76FE-4C66-9534-15EEC34A7DC4}|Simulacion\\Simulacion.csproj|c:\\users\\fer_s\\onedrive\\desktop\\simulacion\\simulacion\\controllers\\generadorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,27 +66,29 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "LehmerRequestDto.cs",
               "DocumentMoniker": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion.Application\\Dtos\\LehmerRequestDto.cs",
               "RelativeDocumentMoniker": "Simulacion.Application\\Dtos\\LehmerRequestDto.cs",
-              "ToolTip": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion.Application\\Dtos\\LehmerRequestDto.cs",
-              "RelativeToolTip": "Simulacion.Application\\Dtos\\LehmerRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion.Application\\Dtos\\LehmerRequestDto.cs*",
+              "RelativeToolTip": "Simulacion.Application\\Dtos\\LehmerRequestDto.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T01:13:51.329Z"
+              "WhenOpened": "2026-04-13T01:13:51.329Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "LehmerService.cs",
               "DocumentMoniker": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion.Application\\Services\\LehmerService.cs",
               "RelativeDocumentMoniker": "Simulacion.Application\\Services\\LehmerService.cs",
               "ToolTip": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion.Application\\Services\\LehmerService.cs",
               "RelativeToolTip": "Simulacion.Application\\Services\\LehmerService.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAA9wBEAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAqwDAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T01:11:16.867Z"
+              "WhenOpened": "2026-04-13T01:11:16.867Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -94,9 +96,9 @@
               "Title": "LehmerController.cs",
               "DocumentMoniker": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion\\Controllers\\LehmerController.cs",
               "RelativeDocumentMoniker": "Simulacion\\Controllers\\LehmerController.cs",
-              "ToolTip": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion\\Controllers\\LehmerController.cs",
-              "RelativeToolTip": "Simulacion\\Controllers\\LehmerController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAMwBkAAABDAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Simulacion\\Simulacion\\Controllers\\LehmerController.cs*",
+              "RelativeToolTip": "Simulacion\\Controllers\\LehmerController.cs*",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAMwB0AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T01:27:22.118Z",
               "EditorCaption": ""

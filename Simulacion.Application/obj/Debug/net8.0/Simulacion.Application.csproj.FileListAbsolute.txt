@@ -13,3 +13,4 @@ C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion.Application\obj\Debug\net8
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion.Application\obj\Debug\net8.0\refint\Simulacion.Application.dll
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.pdb
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion.Application\obj\Debug\net8.0\ref\Simulacion.Application.dll
+C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.sourcelink.json
