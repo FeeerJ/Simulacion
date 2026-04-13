@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Simulacion.Controllers.AdditiveCongruentialController",
+    "Method": "GetAdditiveCongruential",
+    "RelativePath": "api/simuladores/additiveCongruential",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Simulacion.Application.Dtos.AdditiveCongruentialModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Simulacion.Controllers.MidSqueareController",
     "Method": "GetCuadrados",
     "RelativePath": "api/simuladores/Cuadrados Medios",

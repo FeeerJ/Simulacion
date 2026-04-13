@@ -5,6 +5,37 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/simuladores/additiveCongruential": {
+      "post": {
+        "tags": [
+          "AdditiveCongruential"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditiveCongruentialModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditiveCongruentialModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditiveCongruentialModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/simuladores/Lehmer": {
       "post": {
         "tags": [
@@ -70,6 +101,28 @@
   },
   "components": {
     "schemas": {
+      "AdditiveCongruentialModel": {
+        "type": "object",
+        "properties": {
+          "m": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "n0": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "n1": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalNumeros": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "LehmerRequestDto": {
         "type": "object",
         "properties": {
