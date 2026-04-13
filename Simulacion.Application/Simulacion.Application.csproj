@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\CongruencialService.cs" />
+    <Compile Remove="Services\NoLinealService.cs" />
+    <Compile Remove="Services\SimulacionService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Simulacion.Domain\Simulacion.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

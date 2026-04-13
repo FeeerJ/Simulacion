@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "Simulacion.Controllers.MidSqueareController",
+    "Method": "GetCuadrados",
+    "RelativePath": "api/simuladores/Cuadrados Medios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Simulacion.Application.Dtos.MidSquareRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.LehmerController",
+    "Method": "GetLehmer",
+    "RelativePath": "api/simuladores/Lehmer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Simulacion.Application.Dtos.LehmerRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
