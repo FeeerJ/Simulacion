@@ -1,5 +1,85 @@
 [
   {
+    "ContainingType": "Simulacion.Controllers.PruebasEstadisticasController",
+    "Method": "GetPruebaCorridas",
+    "RelativePath": "api/pruebasEstadisticas/corridas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasModel\u002BCorridasRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.PruebasEstadisticasController",
+    "Method": "GetPruebaFrecuencia",
+    "RelativePath": "api/pruebasEstadisticas/frecuencia",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasModel\u002BFrecuenciaRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.PruebasEstadisticasController",
+    "Method": "GetPruebaKS",
+    "RelativePath": "api/pruebasEstadisticas/kolmogorov-smirnov",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasModel\u002BKSRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.PruebasEstadisticasController",
+    "Method": "GetPruebaPromedios",
+    "RelativePath": "api/pruebasEstadisticas/promedios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasModel\u002BPromediosRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.PruebasEstadisticasController",
+    "Method": "GetPruebaSerie",
+    "RelativePath": "api/pruebasEstadisticas/serie",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasModel\u002BSerieRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Simulacion.Controllers.CongruentialMethodController",
     "Method": "GetAdditiveCongruential",
     "RelativePath": "api/simuladores/additiveCongruential",
