@@ -17,6 +17,8 @@ namespace Simulacion
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<MidSquareService>();
             builder.Services.AddScoped<LehmerService>();
+            builder.Services.AddScoped<CongruentialMethodService>();
+            builder.Services.AddScoped<PruebasEstadisticasService>();
 
             var app = builder.Build();
 

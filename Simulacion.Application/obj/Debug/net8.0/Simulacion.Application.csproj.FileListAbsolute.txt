@@ -14,3 +14,19 @@ C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion.Application\obj\Debug\net8
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.pdb
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion.Application\obj\Debug\net8.0\ref\Simulacion.Application.dll
 C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.sourcelink.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\bin\Debug\net8.0\Simulacion.Application.deps.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\bin\Debug\net8.0\Simulacion.Application.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\bin\Debug\net8.0\Simulacion.Application.pdb
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\bin\Debug\net8.0\Simulacion.Domain.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\bin\Debug\net8.0\Simulacion.Domain.pdb
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.csproj.AssemblyReference.cache
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.AssemblyInfoInputs.cache
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.AssemblyInfo.cs
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.csproj.CoreCompileInputs.cache
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.sourcelink.json
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulaci.EDDD533A.Up2Date
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\refint\Simulacion.Application.dll
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\Simulacion.Application.pdb
+E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Application\obj\Debug\net8.0\ref\Simulacion.Application.dll
