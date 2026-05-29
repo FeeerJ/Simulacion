@@ -98,6 +98,47 @@
         }
       }
     },
+    "/api/diagnosticos/binomial": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "parameters": [
+          {
+            "name": "semilla",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": 1234
+            }
+          },
+          {
+            "name": "n",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double",
+              "default": 100
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double",
+              "default": 0,9
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/diagnosticos/uniform": {
       "get": {
         "tags": [

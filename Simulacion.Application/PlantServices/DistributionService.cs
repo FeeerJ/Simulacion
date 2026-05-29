@@ -24,6 +24,29 @@ namespace Simulacion.Application.PlantServices
             }
             return _numerosPseudoAleatorios.Dequeue();
         }
+
+        public double GenerarBinomial(double n, double p)
+        {
+            /*n = total de elementos - p = probabilidad de exito*/
+            int exitos = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (_numerosPseudoAleatorios.TryDequeue(out double u))
+                {
+                    if (u < p)
+                    {
+                        exitos++;
+                    }
+                    else
+                    {
+                      
+                    }
+                }
+                
+
+            }
+            return exitos;
+        }
         public double GenerarNormal(double media, double desviacionEstandar)
         {
             // Box-Muller requiere dos variables U(0,1)

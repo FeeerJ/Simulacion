@@ -1,6 +1,32 @@
 [
   {
     "ContainingType": "Simulacion.Controllers.DiagnosticsController",
+    "Method": "TestBinomial",
+    "RelativePath": "api/diagnosticos/binomial",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "semilla",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "n",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "p",
+        "Type": "System.Double",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.DiagnosticsController",
     "Method": "TestExponencial",
     "RelativePath": "api/diagnosticos/exponencial",
     "HttpMethod": "GET",

@@ -17,15 +17,16 @@ namespace Simulacion.Application.PlantServices
             _distribuciones = distribuciones;
         }
 
+        /*
         public Device ProcesarNuevaCamioneta()
         {
             var lote = new Device();
             /*Generamos el Volumen que trae*/
-            double pesoTotal = _distribuciones.GenerarNormal(83, 15);
+           // double pesoTotal = _distribuciones.GenerarNormal(83, 15);
 
             /*Evaluamos si es apto*/
            
-        }
+        //}*/
 
 
     }

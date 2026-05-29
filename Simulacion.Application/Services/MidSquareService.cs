@@ -18,13 +18,8 @@ namespace Simulacion.Application.Services
             for (int i = 0; i < N; i++)
             {
                 long x = m * m;
-                string xStr = x.ToString();
+                string xStr = x.ToString().PadLeft(2*N,'0');
 
-                if((xStr.Length - N) %2 != 0)
-                {
-                    x *= 10;
-                    xStr = x.ToString();
-                }
                 int start = (xStr.Length - N) / 2;
                 string centroStr = xStr.Substring(start, N);
                 m = long.Parse(centroStr);
