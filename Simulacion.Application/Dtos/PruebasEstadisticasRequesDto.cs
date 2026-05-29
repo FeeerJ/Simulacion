@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simulacion.Application.Dtos;
 
-public class PruebasEstadisticasModel
+public class PruebasEstadisticasRequesDto
 {
     public class PromediosRequestDto
     {

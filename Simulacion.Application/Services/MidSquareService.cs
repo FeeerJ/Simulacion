@@ -9,7 +9,7 @@ using Simulacion.Domain.Interfaces;
 
 namespace Simulacion.Application.Services
 {
-    public class MidSquareService : IGenerador
+    public class MidSquareService : IGenerator
     {
         public IEnumerable<double> Generar(long M, int N, int TOT)
         {

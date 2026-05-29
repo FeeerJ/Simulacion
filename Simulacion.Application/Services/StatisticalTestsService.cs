@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Simulacion.Application.Dtos.PruebasEstadisticasModel;
+using static Simulacion.Application.Dtos.PruebasEstadisticasRequesDto;
 
 namespace Simulacion.Application.Services;
 
-public class PruebasEstadisticasService
+public class StatisticalTestsService
 {
     public PruebaPromediosResultDto PruebaPromedios(List<double> numeros, double zAlfa)
     {

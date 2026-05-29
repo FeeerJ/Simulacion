@@ -98,6 +98,82 @@
         }
       }
     },
+    "/api/diagnosticos/uniform": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/diagnosticos/normal": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/diagnosticos/tecnologia": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "parameters": [
+          {
+            "name": "valorUParam",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/diagnosticos/exponencial": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "parameters": [
+          {
+            "name": "valorUParam",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "mediaMediaDias",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/simuladores/Lehmer": {
       "post": {
         "tags": [
@@ -163,7 +239,7 @@
     "/api/pruebasEstadisticas/promedios": {
       "post": {
         "tags": [
-          "PruebasEstadisticas"
+          "StatisticalTest"
         ],
         "requestBody": {
           "content": {
@@ -194,7 +270,7 @@
     "/api/pruebasEstadisticas/frecuencia": {
       "post": {
         "tags": [
-          "PruebasEstadisticas"
+          "StatisticalTest"
         ],
         "requestBody": {
           "content": {
@@ -225,7 +301,7 @@
     "/api/pruebasEstadisticas/serie": {
       "post": {
         "tags": [
-          "PruebasEstadisticas"
+          "StatisticalTest"
         ],
         "requestBody": {
           "content": {
@@ -256,7 +332,7 @@
     "/api/pruebasEstadisticas/kolmogorov-smirnov": {
       "post": {
         "tags": [
-          "PruebasEstadisticas"
+          "StatisticalTest"
         ],
         "requestBody": {
           "content": {
@@ -287,7 +363,7 @@
     "/api/pruebasEstadisticas/corridas": {
       "post": {
         "tags": [
-          "PruebasEstadisticas"
+          "StatisticalTest"
         ],
         "requestBody": {
           "content": {

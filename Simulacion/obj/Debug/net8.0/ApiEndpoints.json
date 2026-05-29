@@ -1,6 +1,63 @@
 [
   {
-    "ContainingType": "Simulacion.Controllers.PruebasEstadisticasController",
+    "ContainingType": "Simulacion.Controllers.DiagnosticsController",
+    "Method": "TestExponencial",
+    "RelativePath": "api/diagnosticos/exponencial",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "valorUParam",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "mediaMediaDias",
+        "Type": "System.Double",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.DiagnosticsController",
+    "Method": "TestNormal",
+    "RelativePath": "api/diagnosticos/normal",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.DiagnosticsController",
+    "Method": "TestTecnologia",
+    "RelativePath": "api/diagnosticos/tecnologia",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "valorUParam",
+        "Type": "System.Double",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.DiagnosticsController",
+    "Method": "TestUniform",
+    "RelativePath": "api/diagnosticos/uniform",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Simulacion.Controllers.StatisticalTestController",
     "Method": "GetPruebaCorridas",
     "RelativePath": "api/pruebasEstadisticas/corridas",
     "HttpMethod": "POST",
@@ -9,14 +66,14 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasModel\u002BCorridasRequestDto",
+        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasRequesDto\u002BCorridasRequestDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Simulacion.Controllers.PruebasEstadisticasController",
+    "ContainingType": "Simulacion.Controllers.StatisticalTestController",
     "Method": "GetPruebaFrecuencia",
     "RelativePath": "api/pruebasEstadisticas/frecuencia",
     "HttpMethod": "POST",
@@ -25,14 +82,14 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasModel\u002BFrecuenciaRequestDto",
+        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasRequesDto\u002BFrecuenciaRequestDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Simulacion.Controllers.PruebasEstadisticasController",
+    "ContainingType": "Simulacion.Controllers.StatisticalTestController",
     "Method": "GetPruebaKS",
     "RelativePath": "api/pruebasEstadisticas/kolmogorov-smirnov",
     "HttpMethod": "POST",
@@ -41,14 +98,14 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasModel\u002BKSRequestDto",
+        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasRequesDto\u002BKSRequestDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Simulacion.Controllers.PruebasEstadisticasController",
+    "ContainingType": "Simulacion.Controllers.StatisticalTestController",
     "Method": "GetPruebaPromedios",
     "RelativePath": "api/pruebasEstadisticas/promedios",
     "HttpMethod": "POST",
@@ -57,14 +114,14 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasModel\u002BPromediosRequestDto",
+        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasRequesDto\u002BPromediosRequestDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Simulacion.Controllers.PruebasEstadisticasController",
+    "ContainingType": "Simulacion.Controllers.StatisticalTestController",
     "Method": "GetPruebaSerie",
     "RelativePath": "api/pruebasEstadisticas/serie",
     "HttpMethod": "POST",
@@ -73,7 +130,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasModel\u002BSerieRequestDto",
+        "Type": "Simulacion.Application.Dtos.PruebasEstadisticasRequesDto\u002BSerieRequestDto",
         "IsRequired": true
       }
     ],

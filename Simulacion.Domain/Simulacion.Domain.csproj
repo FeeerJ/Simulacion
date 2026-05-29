@@ -11,8 +11,4 @@
     <Compile Remove="Interfaces\IGeneradorLineal.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Entities\" />
-  </ItemGroup>
-
 </Project>

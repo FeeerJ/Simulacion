@@ -32,3 +32,4 @@ E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Data\obj\Debug\net8
 E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Data\obj\Debug\net8.0\refint\Simulacion.Data.dll
 E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Data\obj\Debug\net8.0\Simulacion.Data.pdb
 E:\Simulacion\Numeros Pseudoaleatorios\Simulacion\Simulacion.Data\obj\Debug\net8.0\ref\Simulacion.Data.dll
+C:\Users\fer_s\OneDrive\Desktop\Simulacion\Simulacion.Data\obj\Debug\net8.0\Simulacion.Data.sourcelink.json
