@@ -12,6 +12,7 @@ namespace Simulacion.Domain.Entities
         public DeviceType Tipo { get; set; }
         public double HoraLlegada { get; set; }
        // public bool isApto { get; set; }
-        public double Peso { get; set; }
+        public double PesoAprovechable { get; set; }
+        public double PesoDescarte { get; set; }
     }
 }

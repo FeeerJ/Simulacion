@@ -10,21 +10,26 @@ namespace Simulacion.Application.PlantServices
 {
     public class LlegadaService
     {
-        private readonly IGenerator _generador;
+        private readonly IDistribution _distribuciones;
 
-        public LlegadaService (IGenerator generador)
+        public LlegadaService(IDistribution distribuciones)
         {
-            _generador = generador;
+            _distribuciones = distribuciones;
         }
-    }
 
-
-    /*Meotdo que se va a llaamr cuando llegue un camion*//*
-    private List<Device> RecibirCarga(double relojGlobal)
+        public Device ProcesarNuevaCamioneta()
         {
-            var cargaCamion = new List<Device>();
+            var lote = new Device();
+            /*Generamos el Volumen que trae*/
+            double pesoTotal = _distribuciones.GenerarNormal(83, 15);
 
-            /*Generamos el peso total del camion*/
-            //double pesoTotal = _generador.
-        //}
+            /*Evaluamos si es apto*/
+           
+        }
+
+
     }
+
+
+
+}
