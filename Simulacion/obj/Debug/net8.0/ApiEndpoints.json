@@ -8,13 +8,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "valorUParam",
+        "Name": "mediaDias",
         "Type": "System.Double",
         "IsRequired": false
       },
       {
-        "Name": "mediaMediaDias",
-        "Type": "System.Double",
+        "Name": "semilla",
+        "Type": "System.Int64",
         "IsRequired": false
       }
     ],
@@ -27,7 +27,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "semilla",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -39,8 +45,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "valorUParam",
-        "Type": "System.Double",
+        "Name": "semilla",
+        "Type": "System.Int64",
         "IsRequired": false
       }
     ],
@@ -53,7 +59,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "semilla",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

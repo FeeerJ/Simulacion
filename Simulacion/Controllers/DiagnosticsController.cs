@@ -11,85 +11,88 @@ namespace Simulacion.Controllers {
     [Route("api/diagnosticos")]
 public class DiagnosticsController : ControllerBase
     {
-    [HttpGet("uniform")]
-    public IActionResult TestUniform()
-    {
-        var numerosControlados = new List<double> { 0.5 };
-        var servicio = new DistributionService(numerosControlados);
+        private readonly MidSquareService _generador;
 
-        double resultado = servicio.GenerarUniforme(10, 20);
-
-        return Ok(new
+        public DiagnosticsController (MidSquareService generador)
         {
-            Metodo = "Uniforme",
-            InputU = 0.5,
-            ValorEsperado = 15,
-            ValorObtenido = resultado,
-            Resultado = (resultado == 15) ? "EXITO" : "FALLO"
-        });
-    }
+            _generador = generador;
+        }
 
-    [HttpGet("normal")]
-    public IActionResult TestNormal()
-    {
-        //Box-Muller requiere dos variables U. Inyectamos 0.5 y 0.5.
-        var numerosControlados = new List<double> { 0.5, 0.5 };
-        var servicio = new DistributionService(numerosControlados);
-
-        // Probamos con Media 100 y Desviación 10
-        double resultado = servicio.GenerarNormal(100, 10);
-
-        //Sabemos por calculadora que el resultado exacto con esos inputs es ~88.225
-        double esperado = 88.225;
-        double obtenidoRedondeado = Math.Round(resultado, 3);
-        double margenError = 0.01;
-        return Ok(new
+        [HttpGet("uniform")]
+        public IActionResult TestUniform([FromQuery] long semilla = 8453)
         {
-            Metodo = "Normal (Box-Muller)",
-            InputsU = new[] { 0.5, 0.5 },
-            Media = 100,
-            Desviacion = 10,
-            ValorEsperado = esperado,
-            ValorObtenido = obtenidoRedondeado,
-            Resultado = Math.Abs(obtenidoRedondeado - esperado) <= margenError ? "EXITO" : "FALLO"
-        });
-    }
+            // 1. Usamos MidSquare para pedir 1 solo número (k=4 dígitos)
+            var listaU = _generador.Generar(semilla, 4, 1);
+            var servicio = new DistributionService(listaU);
 
-    [HttpGet("tecnologia")]
-    public IActionResult TestTecnologia([FromQuery] double valorUParam)
-    {
-        // Para probar la clasificacion de la tecnologia debes ingresar el valor de U manualmente, por ejemplo: 0,15- 0,14, etc. Deberia devolverte la tecnologia seleccionada
-       
-        var numerosControlados = new List<double> { valorUParam };
-        var servicio = new DistributionService(numerosControlados);
+            double resultado = servicio.GenerarUniforme(10, 20);
 
-        string tecnologiaResultante = servicio.DeterminarTecnologia();
+            return Ok(new
+            {
+                Metodo = "Uniforme",
+                SemillaUsada = semilla,
+                U_GeneradoPorMidSquare = listaU.First(),
+                Rango = "10 a 20",
+                ValorObtenido = Math.Round(resultado, 2)
+            });
+        }
 
-        return Ok(new
+        [HttpGet("normal")]
+        public IActionResult TestNormal([FromQuery] long semilla = 8453)
         {
-            Metodo = "Segmentación de Tecnología (Binomial/Empírica)",
-            InputU_Recibido = valorUParam,
-            ReglaAplicada = "CRT (<=0.15), LCD (<=0.65), LED (>0.65)",
-            ClasificacionFinal = tecnologiaResultante
-        });
-    }
+            // Box-Muller requiere DOS variables U. Le pedimos 2 a MidSquare.
+            var listaU = _generador.Generar(semilla, 4, 2);
+            var servicio = new DistributionService(listaU);
 
-    [HttpGet("exponencial")]
-    public IActionResult TestExponencial([FromQuery] double valorUParam, [FromQuery] double mediaMediaDias)
-    {
-            // Para probar este endpoint debemos ingresar manualmente un valor de U y la media de dias. 
-        var numerosControlados = new List<double> { valorUParam };
-        var servicio = new DistributionService(numerosControlados);
+            double resultado = servicio.GenerarNormal(100, 10);
 
-        double resultado = servicio.GenerarExponencial(mediaMediaDias);
+            return Ok(new
+            {
+                Metodo = "Normal (Box-Muller)",
+                SemillaUsada = semilla,
+                InputsU_Generados = listaU.ToList(),
+                Media = 100,
+                Desviacion = 10,
+                ValorObtenido = Math.Round(resultado, 3)
+            });
+        }
 
-        return Ok(new
+        [HttpGet("tecnologia")]
+        public IActionResult TestTecnologia([FromQuery] long semilla = 8453)
         {
-            Metodo = "Exponencial (Llegada Flete Internacional)",
-            InputU = valorUParam,
-            MediaDias = mediaMediaDias,
-            DiasCalculados = Math.Round(resultado, 2)
-        });
+            // Pedimos 1 número a MidSquare
+            var listaU = _generador.Generar(semilla, 4, 1);
+            var servicio = new DistributionService(listaU);
+
+            string tecnologiaResultante = servicio.DeterminarTecnologia();
+
+            return Ok(new
+            {
+                Metodo = "Segmentación de Tecnología (Binomial/Empírica)",
+                SemillaUsada = semilla,
+                U_GeneradoPorMidSquare = listaU.First(),
+                ReglaAplicada = "CRT (<=0.15), LCD (<=0.65), LED (>0.65)",
+                ClasificacionFinal = tecnologiaResultante
+            });
+        }
+
+        [HttpGet("exponencial")]
+        public IActionResult TestExponencial([FromQuery] double mediaDias = 15, [FromQuery] long semilla = 8453)
+        {
+            // Pedimos 1 número a MidSquare
+            var listaU = _generador.Generar(semilla, 4, 1);
+            var servicio = new DistributionService(listaU);
+
+            double resultado = servicio.GenerarExponencial(mediaDias);
+
+            return Ok(new
+            {
+                Metodo = "Exponencial (Llegada Flete Internacional)",
+                SemillaUsada = semilla,
+                U_GeneradoPorMidSquare = listaU.First(),
+                MediaDias = mediaDias,
+                DiasCalculados = Math.Round(resultado, 2)
+            });
+        }
     }
-}
 }

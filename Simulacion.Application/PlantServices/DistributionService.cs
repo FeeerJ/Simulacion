@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Simulacion.Application.PlantServices
 {
     public class DistributionService: IDistribution
-
+         /*Se define como se van a calcular las diversas distribuciones de probabalidad, en base al metodo de generacion pseudoaleatorio definido en el DiagnosticsController*/
     {
         private readonly Queue<double> _numerosPseudoAleatorios;
         public DistributionService(IEnumerable<double> numerosGenerados)

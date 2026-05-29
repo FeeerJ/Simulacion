@@ -103,6 +103,17 @@
         "tags": [
           "Diagnostics"
         ],
+        "parameters": [
+          {
+            "name": "semilla",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": 8453
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -114,6 +125,17 @@
       "get": {
         "tags": [
           "Diagnostics"
+        ],
+        "parameters": [
+          {
+            "name": "semilla",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": 8453
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -129,11 +151,12 @@
         ],
         "parameters": [
           {
-            "name": "valorUParam",
+            "name": "semilla",
             "in": "query",
             "schema": {
-              "type": "number",
-              "format": "double"
+              "type": "integer",
+              "format": "int64",
+              "default": 8453
             }
           }
         ],
@@ -151,19 +174,21 @@
         ],
         "parameters": [
           {
-            "name": "valorUParam",
+            "name": "mediaDias",
             "in": "query",
             "schema": {
               "type": "number",
-              "format": "double"
+              "format": "double",
+              "default": 15
             }
           },
           {
-            "name": "mediaMediaDias",
+            "name": "semilla",
             "in": "query",
             "schema": {
-              "type": "number",
-              "format": "double"
+              "type": "integer",
+              "format": "int64",
+              "default": 8453
             }
           }
         ],
