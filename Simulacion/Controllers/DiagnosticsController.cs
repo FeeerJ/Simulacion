@@ -18,11 +18,24 @@ public class DiagnosticsController : ControllerBase
             _generador = generador;
         }
 
+        private IEnumerable<double> GenerarU(long semilla, int total)
+        {
+            var config = new MixedCongruentialModel(
+                M: 100000,
+                N0: semilla,
+                A:1664525,
+                C: 1013904223,
+                TotalNumeros: total
+                );
+            return _generador.GenerateMixed(config.M, config.N0, config.A, config.C, config.TotalNumeros);
+        }
+
 
         [HttpGet("binomial")]
         public IActionResult TestBinomial([FromQuery] long semilla = 1234, [FromQuery] double n = 100, [FromQuery] double p = 0.9)
         {
-            var listaU = _generador.GenerateMixed(M: 100000, N0: semilla, A: 1664525, C: 1013904223, Total: (int)n + 10).ToList(); // Pedimos n números a MidSquare para la Binomial
+           
+            var listaU = GenerarU(semilla, (int)n + 10).ToList(); // Pedimos n números al metodo CongruencialMixto para la Binomial
             var servicio = new DistributionService(listaU);
             double resultados = servicio.GenerarBinomial(n, p);
 
@@ -42,8 +55,8 @@ public class DiagnosticsController : ControllerBase
         [HttpGet("uniform")]
         public IActionResult TestUniform([FromQuery] long semilla = 8453)
         {
-            // 1. Usamos MidSquare para pedir 1 solo número (k=4 dígitos)
-            var listaU = _generador.GenerateMixed(M: 100000, N0: semilla, A: 1664525, C: 1013904223, Total: 1);
+            // 1. Usamos CongruencialMixto para pedir 1 solo número (k=4 dígitos)
+            var listaU = GenerarU(semilla, 1);
             var servicio = new DistributionService(listaU);
 
             double resultado = servicio.GenerarUniforme(10, 20);
@@ -61,8 +74,8 @@ public class DiagnosticsController : ControllerBase
         [HttpGet("normal")]
         public IActionResult TestNormal([FromQuery] long semilla = 8453)
         {
-            // Box-Muller requiere DOS variables U. Le pedimos 2 a MidSquare.
-            var listaU = _generador.GenerateMixed(M: 100000, N0: semilla, A: 1664525, C: 1013904223, Total: 2);
+            // Box-Muller requiere DOS variables U. Le pedimos 2 a CongruencialMixto.
+            var listaU = GenerarU(semilla, 2);
             var servicio = new DistributionService(listaU);
 
             double resultado = servicio.GenerarNormal(100, 10);
@@ -81,8 +94,8 @@ public class DiagnosticsController : ControllerBase
         [HttpGet("tecnologia")]
         public IActionResult TestTecnologia([FromQuery] long semilla = 8453)
         {
-            // Pedimos 1 número a MidSquare
-            var listaU = _generador.GenerateMixed(M: 100000, N0: semilla, A: 1664525, C: 1013904223, Total: 1);
+            // Pedimos 1 número a CongruencialMixto
+            var listaU = GenerarU(semilla, 1);
             var servicio = new DistributionService(listaU);
 
             string tecnologiaResultante = servicio.DeterminarTecnologia();
@@ -100,8 +113,8 @@ public class DiagnosticsController : ControllerBase
         [HttpGet("exponencial")]
         public IActionResult TestExponencial([FromQuery] double mediaDias = 15, [FromQuery] long semilla = 8453)
         {
-            // Pedimos 1 número a MidSquare
-            var listaU = _generador.GenerateMixed(M: 100000, N0: semilla, A: 1664525, C: 1013904223, Total: 1);
+            // Pedimos 1 número a CongruencialMixto
+            var listaU = GenerarU(semilla,1);
             var servicio = new DistributionService(listaU);
 
             double resultado = servicio.GenerarExponencial(mediaDias);

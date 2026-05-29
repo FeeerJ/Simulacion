@@ -95,6 +95,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Simulacion.PlantController.LlegadaResiduosController",
+    "Method": "ProcesarCaminoeta",
+    "RelativePath": "api/llegadaResiduos/Procesar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Simulacion.Controllers.StatisticalTestController",
     "Method": "GetPruebaCorridas",
     "RelativePath": "api/pruebasEstadisticas/corridas",

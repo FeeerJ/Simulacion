@@ -1,5 +1,7 @@
 
+using Simulacion.Application.PlantServices;
 using Simulacion.Application.Services;
+using Simulacion.Domain.Interfaces;
 using Simulacion.Exceptions;
 
 namespace Simulacion
@@ -30,6 +32,15 @@ namespace Simulacion
             builder.Services.AddScoped<MidSquareService>();
             builder.Services.AddScoped<LehmerService>();
             builder.Services.AddScoped<CongruentialMethodService>();
+            /**/
+            builder.Services.AddScoped<IDistribution>(provider =>
+            {
+                var generador = provider.GetRequiredService<CongruentialMethodService>();
+                var listaU = generador.GenerateMixed(100000, 1234, 1664525, 1013904223, 500);
+                return new DistributionService(listaU);
+            });
+            builder.Services.AddScoped<LlegadaService>();
+            /**/
             builder.Services.AddScoped<StatisticalTestsService>();
 
             /*Servicios para el Middleware*/

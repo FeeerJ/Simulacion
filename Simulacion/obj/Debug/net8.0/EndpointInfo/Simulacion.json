@@ -271,6 +271,18 @@
         }
       }
     },
+    "/api/llegadaResiduos/Procesar": {
+      "post": {
+        "tags": [
+          "LlegadaResiduos"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/simuladores/Cuadrados Medios": {
       "post": {
         "tags": [

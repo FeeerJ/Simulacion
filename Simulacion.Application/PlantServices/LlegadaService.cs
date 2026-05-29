@@ -17,16 +17,24 @@ namespace Simulacion.Application.PlantServices
             _distribuciones = distribuciones;
         }
 
-        /*
-        public Device ProcesarNuevaCamioneta()
+        public Camioneta ProcesarNuevaCamioneta()
         {
-            var lote = new Device();
-            /*Generamos el Volumen que trae*/
-           // double pesoTotal = _distribuciones.GenerarNormal(83, 15);
+            double pesoTotal = _distribuciones.GenerarNormal(83, 15);
+            /*TODAVIA NO ESTA ESTO */
+            // double pesoAprovechable = _distribuciones.GenerarBinomial(pesoTotal, 0.90);
+            // double pesoReventa = _distribuciones.GenerarBinomial(pesoAprovechable, 0.15);
+            // double pesoDesmantelamiento = pesoAprovechable - pesoReventa;
 
-            /*Evaluamos si es apto*/
-           
-        //}*/
+            return new Camioneta
+            {
+                PesoTotal = pesoTotal,
+               // PesoDescarte = pesoTotal - pesoAprovechable,
+                //PesoReventa = pesoReventa,
+                //PesoDesmantelamiento = pesoDesmantelamiento,
+                Estado = "Recibido",
+                FechaIngreso = DateTime.Now
+            };
+        }
 
 
     }
