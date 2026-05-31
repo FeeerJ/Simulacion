@@ -36,7 +36,8 @@ namespace Simulacion
             builder.Services.AddScoped<IDistribution>(provider =>
             {
                 var generador = provider.GetRequiredService<CongruentialMethodService>();
-                var listaU = generador.GenerateMixed(100000, 1234, 1664525, 1013904223, 500);
+                var semilla = DateTime.Now.Ticks % 100000; // Generar una semilla basada en el tiempo actual, se toma el modulo de 100000 para limitar su tamaño
+                var listaU = generador.GenerateMixed(100000, semilla, 1664525, 1013904223, 500);
                 return new DistributionService(listaU);
             });
             builder.Services.AddScoped<LlegadaService>();
