@@ -37,11 +37,12 @@ namespace Simulacion
             {
                 var generador = new CongruentialMethodService();
                 var semilla = DateTime.Now.Ticks % 100000; // Generar una semilla basada en el tiempo actual, se toma el modulo de 100000 para limitar su tamaño
-                var listaU = generador.GenerateMixed(100000, semilla, 1664525, 1013904223, 500);
+                var listaU = generador.GenerateMixed(100000, semilla, 1664525, 1013904223, 15000);
                 return new DistributionService(listaU);
             });
             builder.Services.AddSingleton<LlegadaService>();
             builder.Services.AddSingleton<SegmentacionService>();
+            builder.Services.AddScoped<SimulacionService>();
             /**/
             builder.Services.AddScoped<StatisticalTestsService>();
 
