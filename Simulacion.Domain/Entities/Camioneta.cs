@@ -11,12 +11,12 @@ namespace Simulacion.Domain.Entities
         /*CADA DEVICE ES UN LOTE DE RESIDUOS - 1 CAMIONETA */
 
         //public DeviceType Tipo { get; set; }
-        public DateTime FechaIngreso { get; set; } = DateTime.Now;
+       /* public DateTime FechaIngreso { get; set; } = DateTime.Now;
         public double? PesoAprovechable { get; set; }
         public double? PesoDesmantelamiento { get; set; }
-        public double? PesoDescarte { get; set; }
-        public double PesoTotal { get; set; }
-        public double? PesoReventa { get; set; }
+        public double? PesoDescarte { get; set; }*/
+        public int CantDispositivos { get; set; }
+        //public double? PesoReventa { get; set; }
 
         public string Estado { get; set; }
     }

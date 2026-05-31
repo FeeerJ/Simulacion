@@ -21,6 +21,13 @@ namespace Simulacion.PlantController
             var camioneta = _llegada.ProcesarNuevaCamioneta();
             return Ok(camioneta);
         }
+
+        [HttpPost("Resumen Dia")]
+        public IActionResult ObtenerResumen()
+        {
+            var resumen = _llegada.ObtenerResumen();
+            return Ok(resumen);
+        }
     }
 
 

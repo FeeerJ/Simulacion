@@ -11,7 +11,8 @@ namespace Simulacion.Application.PlantServices
     public class LlegadaService
     {
         private readonly IDistribution _distribuciones;
-
+        private int _totalDispositivos = 0;
+        private int _totalCamionetas = 0;
         public LlegadaService(IDistribution distribuciones)
         {
             _distribuciones = distribuciones;
@@ -19,21 +20,27 @@ namespace Simulacion.Application.PlantServices
 
         public Camioneta ProcesarNuevaCamioneta()
         {
-            double pesoTotal = _distribuciones.GenerarNormal(83, 15);
-            /*TODAVIA NO ESTA ESTO */
-            // double pesoAprovechable = _distribuciones.GenerarBinomial(pesoTotal, 0.90);
-            // double pesoReventa = _distribuciones.GenerarBinomial(pesoAprovechable, 0.15);
-            // double pesoDesmantelamiento = pesoAprovechable - pesoReventa;
+            int CantDispositivos = (int)_distribuciones.GenerarNormal(50, 10);
+            _totalDispositivos += CantDispositivos;
+            _totalCamionetas += 1;
 
             return new Camioneta
             {
-                PesoTotal = pesoTotal,
-               // PesoDescarte = pesoTotal - pesoAprovechable,
-                //PesoReventa = pesoReventa,
-                //PesoDesmantelamiento = pesoDesmantelamiento,
+                CantDispositivos = CantDispositivos,
                 Estado = "Recibido",
-                FechaIngreso = DateTime.Now
+               
             };
+        }
+
+        public ResumenLlegada ObtenerResumen()
+        {
+            return new ResumenLlegada
+            {
+                TotalCamiones = _totalCamionetas,
+                TotalDispositivos = _totalDispositivos,
+                PromedioDispositivosPorCamion = _totalCamionetas > 0 ? (double)_totalDispositivos / _totalCamionetas : 0
+            };
+
         }
 
 
