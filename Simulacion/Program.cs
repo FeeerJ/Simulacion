@@ -43,6 +43,7 @@ namespace Simulacion
             builder.Services.AddSingleton<LlegadaService>();
             builder.Services.AddSingleton<SegmentacionService>();
             builder.Services.AddScoped<SimulacionService>();
+            builder.Services.AddSingleton<PesoService>();
             /**/
             builder.Services.AddScoped<StatisticalTestsService>();
 

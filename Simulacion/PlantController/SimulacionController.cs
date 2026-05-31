@@ -12,7 +12,7 @@ public class SimulacionController : ControllerBase
         _simulacion = simulacion;
     }
 
-    // POST api/simulacion/ejecutar?dias=30&camionetasPorDia=5
+  
     [HttpPost("ejecutar")]
     public IActionResult Ejecutar([FromQuery] int dias = 30, [FromQuery] int camionetasPorDia = 5)
     {

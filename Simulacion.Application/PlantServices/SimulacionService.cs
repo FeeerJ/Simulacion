@@ -11,11 +11,12 @@ namespace Simulacion.Application.PlantServices
     {
         private readonly LlegadaService _llegada;
         private readonly SegmentacionService _segmentacion;
-
-        public SimulacionService(LlegadaService llegada, SegmentacionService segmentacion)
+        private readonly PesoService _peso;
+        public SimulacionService(LlegadaService llegada, SegmentacionService segmentacion, PesoService peso)
         {
             _llegada = llegada;
             _segmentacion = segmentacion;
+            _peso = peso;
         }
 
 
@@ -31,6 +32,7 @@ namespace Simulacion.Application.PlantServices
                 {
                     var llegada = _llegada.ProcesarNuevaCamioneta();
                     var segmentacion = _segmentacion.ProcesoSegmentar(llegada.ParaDesmantelamiento);
+                    var peso = _peso.CalcularPeso(segmentacion.TotalCRT, segmentacion.TotalLCD, segmentacion.TotalLED);
 
                     resumenDia.TotalDesmantelamiento += llegada.ParaDesmantelamiento;
                     resumenDia.TotalCRT += segmentacion.TotalCRT;
@@ -38,6 +40,7 @@ namespace Simulacion.Application.PlantServices
                     resumenDia.TotalLED += segmentacion.TotalLED;
                     resumenDia.TotalRefurbishment += llegada.ParaRefurbishment;
                     resumenDia.TotalDescartados += llegada.Descartados;
+                    resumenDia.PesoTotalKg += peso.PesoTotal;
                 }
 
                 resumenPorDia.Add(resumenDia);
@@ -55,7 +58,8 @@ namespace Simulacion.Application.PlantServices
                     TotalLED = resumenPorDia.Sum(d => d.TotalLED),
                     TotalRefurbishment = resumenPorDia.Sum(d => d.TotalRefurbishment),
                     TotalDescartados = resumenPorDia.Sum(d => d.TotalDescartados),
-                    TotalDesmantelamiento = resumenPorDia.Sum(d => d.TotalDesmantelamiento)
+                    TotalDesmantelamiento = resumenPorDia.Sum(d => d.TotalDesmantelamiento),
+                    TotalPeso = Math.Round(resumenPorDia.Sum(d => d.PesoTotalKg),2)
                 }
             };
         }

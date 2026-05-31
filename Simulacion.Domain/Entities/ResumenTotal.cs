@@ -14,5 +14,6 @@ namespace Simulacion.Domain.Entities
         public int TotalRefurbishment { get; set; }
         public int TotalDescartados { get; set; }
         public int TotalDesmantelamiento { get; set; }
+        public double TotalPeso { get; set; }
     }
 }
