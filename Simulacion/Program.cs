@@ -41,6 +41,7 @@ namespace Simulacion
                 return new DistributionService(listaU);
             });
             builder.Services.AddSingleton<LlegadaService>();
+            builder.Services.AddSingleton<SegmentacionService>();
             /**/
             builder.Services.AddScoped<StatisticalTestsService>();
 
