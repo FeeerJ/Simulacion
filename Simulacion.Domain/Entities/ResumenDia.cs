@@ -18,5 +18,11 @@ namespace Simulacion.Domain.Entities
         public double PesoTotalKg { get; set; }
         public double PesoToxiKg { get; set; }
         public double CostoDisposicionToxico { get; set; }
+
+        public double TotalCobreKG { get; set; }  
+        public double TotalOroKG { get; set; }    
+        public double TotalPlataKG { get; set; } 
+        public double TotalPCBKg { get; set; }   
     }
 }
+
