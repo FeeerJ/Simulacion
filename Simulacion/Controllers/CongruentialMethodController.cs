@@ -4,6 +4,7 @@ using Simulacion.Application.Services;
 
 namespace Simulacion.Controllers;
 
+/*
 [ApiController]
 [Route("api/simuladores")]
 
@@ -36,5 +37,5 @@ public class CongruentialMethodController : ControllerBase
     {
         var result = _congruentialService.GenerateMixed(request.M, request.N0, request.A, request.C, request.TotalNumeros);
         return Ok(result);
-    }
-}
+    }*/
+

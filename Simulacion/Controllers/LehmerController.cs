@@ -7,6 +7,7 @@ using Simulacion.Application.Dtos;
 
 namespace Simulacion.Controllers
 {
+    /*
     // [Authorize]
     [ApiController]
     [Route("api/simuladores")]
@@ -32,5 +33,5 @@ namespace Simulacion.Controllers
         }
 
 
-    }
+    } */
 }

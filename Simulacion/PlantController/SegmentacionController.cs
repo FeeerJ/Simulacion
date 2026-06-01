@@ -4,6 +4,7 @@ using Simulacion.Application.PlantServices;
 
 namespace Simulacion.PlantController
 {
+    /*
     [ApiController]
     [Route("api/segmentacion")]
     public class SegmentacionController : ControllerBase
@@ -35,5 +36,5 @@ namespace Simulacion.PlantController
             return Ok(resumen);
         }
 
-    }
+    }*/
 }

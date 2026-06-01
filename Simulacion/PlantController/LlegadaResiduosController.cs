@@ -3,6 +3,7 @@ using Simulacion.Application.PlantServices;
 
 namespace Simulacion.PlantController
 {
+    /*
     [ApiController]
     [Route("api/llegadaResiduos")]
     public class LlegadaResiduosController : ControllerBase
@@ -29,6 +30,6 @@ namespace Simulacion.PlantController
             return Ok(resumen);
         }
     }
-
+    */
 
 }

@@ -2,8 +2,8 @@
 using Simulacion.Application.Dtos;
 using Simulacion.Application.Services;
 
-namespace Simulacion.Controllers;
-
+namespace Simulacion.Controllers { 
+/*
 [ApiController]
 [Route("api/pruebasEstadisticas")]
 public class StatisticalTestController : ControllerBase
@@ -48,5 +48,5 @@ public class StatisticalTestController : ControllerBase
     {
         var result = _pruebasService.PruebaCorridasMedia(request.Numeros, request.ChiCuadradoAlfa);
         return Ok(result);
-    }
+    }*/
 }

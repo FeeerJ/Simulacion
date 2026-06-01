@@ -6,7 +6,7 @@ using Simulacion.Application.Services;
 
 
 namespace Simulacion.Controllers { 
-
+    /*
     [ApiController]
     [Route("api/diagnosticos")]
 public class DiagnosticsController : ControllerBase
@@ -128,5 +128,5 @@ public class DiagnosticsController : ControllerBase
                 DiasCalculados = Math.Round(resultado, 2)
             });
         }
-    }
+    }*/
 }
