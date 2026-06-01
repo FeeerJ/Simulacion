@@ -14,13 +14,15 @@ namespace Simulacion.Application.PlantServices
         private readonly PesoService _peso;
         private readonly SustanciasToxicasService _sustanciasToxicas;
         private readonly ExtraccionMaterialesService _extraccion;
-        public SimulacionService(LlegadaService llegada, SegmentacionService segmentacion, PesoService peso, SustanciasToxicasService sustanciasToxicas,ExtraccionMaterialesService extraccion)
+        private readonly BalanceFinancieroService _balance;
+        public SimulacionService(LlegadaService llegada, SegmentacionService segmentacion, PesoService peso, SustanciasToxicasService sustanciasToxicas,ExtraccionMaterialesService extraccion, BalanceFinancieroService balance)
         {
             _llegada = llegada;
             _segmentacion = segmentacion;
             _peso = peso;
             _sustanciasToxicas = sustanciasToxicas;
             _extraccion = extraccion;
+            _balance = balance;
         }
 
 
@@ -56,7 +58,11 @@ namespace Simulacion.Application.PlantServices
                     resumenDia.CostoDisposicionToxico += toxicas.CostoDisposicion;
                 }
 
-                resumenPorDia.Add(resumenDia);
+                   var balance = _balance.ProcesarDia( dia, resumenDia.TotalRefurbishment,  resumenDia.PesoTotalKg, resumenDia.TotalCobreKG,resumenDia.TotalPCBKg, resumenDia.CostoDisposicionToxico); resumenDia.IngresosDia = balance.IngresosDia;
+                    resumenDia.CostosDia = balance.CostosDia;
+                    resumenDia.GananciaDia = balance.GananciaDia;
+                    resumenDia.PCBacumuladoKg = balance.PCBacumuladoKg;
+                  resumenPorDia.Add(resumenDia);
             }
 
             return new ResultadoSimulacion
@@ -77,7 +83,10 @@ namespace Simulacion.Application.PlantServices
                     TotalCostoDisposicionToxico = Math.Round(resumenPorDia.Sum(d => d.CostoDisposicionToxico), 2),
                     TotalPesoOro = Math.Round(resumenPorDia.Sum(d => d.TotalOroKG), 2),
                     TotalPesoCobre = Math.Round(resumenPorDia.Sum(d => d.TotalCobreKG), 2),
-                    TotalPesoPlata = Math.Round(resumenPorDia.Sum(d => d.TotalPlataKG),2)
+                    TotalPesoPlata = Math.Round(resumenPorDia.Sum(d => d.TotalPlataKG),2),
+                    IngresosTotales = Math.Round(resumenPorDia.Sum(d => d.IngresosDia), 2),
+                    CostosTotales = Math.Round(resumenPorDia.Sum(d => d.CostosDia), 2),
+                    GananciaNeta = Math.Round(resumenPorDia.Sum(d => d.GananciaDia), 2)
                 }
             };
         }

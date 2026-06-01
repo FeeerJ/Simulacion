@@ -21,8 +21,12 @@ namespace Simulacion.Domain.Entities
 
         public double TotalCobreKG { get; set; }  
         public double TotalOroKG { get; set; }    
-        public double TotalPlataKG { get; set; } 
-        public double TotalPCBKg { get; set; }   
+        public double TotalPlataKG { get; set; }
+        public double TotalPCBKg { get; set; }
+        public double IngresosDia { get; set; }
+        public double CostosDia { get; set; }     
+        public double GananciaDia { get; set; }     
+        public double PCBacumuladoKg { get; set; }  
     }
 }
 

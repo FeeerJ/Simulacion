@@ -46,6 +46,7 @@ namespace Simulacion
             builder.Services.AddSingleton<PesoService>();
             builder.Services.AddSingleton<SustanciasToxicasService>();
             builder.Services.AddSingleton<ExtraccionMaterialesService>();
+            builder.Services.AddScoped<BalanceFinancieroService>();
             /**/
             builder.Services.AddScoped<StatisticalTestsService>();
 

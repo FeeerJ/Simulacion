@@ -20,5 +20,8 @@ namespace Simulacion.Domain.Entities
         public double TotalPesoOro { get; set; }
         public double TotalPesoPlata { get; set; }
         public double TotalPesoCobre { get; set; }
+        public double IngresosTotales { get; set; }
+        public double CostosTotales { get; set; }    
+        public double GananciaNeta { get; set; }     
     }
 }
