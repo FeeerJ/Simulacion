@@ -15,5 +15,7 @@ namespace Simulacion.Domain.Entities
         public int TotalDescartados { get; set; }
         public int TotalDesmantelamiento { get; set; }
         public double TotalPeso { get; set; }
+       public double TotalPesoToxico { get; set; }
+          public double TotalCostoDisposicionToxico { get; set; }
     }
 }

@@ -12,11 +12,13 @@ namespace Simulacion.Application.PlantServices
         private readonly LlegadaService _llegada;
         private readonly SegmentacionService _segmentacion;
         private readonly PesoService _peso;
-        public SimulacionService(LlegadaService llegada, SegmentacionService segmentacion, PesoService peso)
+        private readonly SustanciasToxicasService _sustanciasToxicas;
+        public SimulacionService(LlegadaService llegada, SegmentacionService segmentacion, PesoService peso, SustanciasToxicasService sustanciasToxicas)
         {
             _llegada = llegada;
             _segmentacion = segmentacion;
             _peso = peso;
+            _sustanciasToxicas = sustanciasToxicas;
         }
 
 
@@ -33,6 +35,7 @@ namespace Simulacion.Application.PlantServices
                     var llegada = _llegada.ProcesarNuevaCamioneta();
                     var segmentacion = _segmentacion.ProcesoSegmentar(llegada.ParaDesmantelamiento);
                     var peso = _peso.CalcularPeso(segmentacion.TotalCRT, segmentacion.TotalLCD, segmentacion.TotalLED);
+                    var toxicas = _sustanciasToxicas.ProcesarSustancias(peso.PesoTotal);
 
                     resumenDia.TotalDesmantelamiento += llegada.ParaDesmantelamiento;
                     resumenDia.TotalCRT += segmentacion.TotalCRT;
@@ -41,6 +44,8 @@ namespace Simulacion.Application.PlantServices
                     resumenDia.TotalRefurbishment += llegada.ParaRefurbishment;
                     resumenDia.TotalDescartados += llegada.Descartados;
                     resumenDia.PesoTotalKg += peso.PesoTotal;
+                    resumenDia.PesoToxiKg += Math.Round(toxicas.PesoToxicoKg, 2);
+                    resumenDia.CostoDisposicionToxico += toxicas.CostoDisposicion;
                 }
 
                 resumenPorDia.Add(resumenDia);
@@ -59,7 +64,9 @@ namespace Simulacion.Application.PlantServices
                     TotalRefurbishment = resumenPorDia.Sum(d => d.TotalRefurbishment),
                     TotalDescartados = resumenPorDia.Sum(d => d.TotalDescartados),
                     TotalDesmantelamiento = resumenPorDia.Sum(d => d.TotalDesmantelamiento),
-                    TotalPeso = Math.Round(resumenPorDia.Sum(d => d.PesoTotalKg),2)
+                    TotalPeso = Math.Round(resumenPorDia.Sum(d => d.PesoTotalKg),2),
+                    TotalPesoToxico = Math.Round(resumenPorDia.Sum(d => d.PesoToxiKg),2),
+                    TotalCostoDisposicionToxico = Math.Round(resumenPorDia.Sum(d => d.CostoDisposicionToxico),2)
                 }
             };
         }

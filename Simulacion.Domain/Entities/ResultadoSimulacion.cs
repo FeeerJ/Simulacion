@@ -12,5 +12,6 @@ namespace Simulacion.Domain.Entities
         public int CamionetasPorDia { get; set; }
         public List<ResumenDia> ResumenPorDia { get; set; }
         public ResumenTotal Totales { get; set; }
+  
     }
 }
