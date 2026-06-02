@@ -34,17 +34,17 @@ namespace Simulacion.Application.PlantServices
             double pesoLCD = 0;
             double pesoLED = 0;
 
-            for(int i =0; i< cantCRT; i++)
+            for (int i = 0; i < cantCRT; i++)
             {
-                pesoCRT = _distribucion.GenerarUniforme(11, 104);
+                pesoCRT += _distribucion.GenerarUniforme(11, 104);
             }
             for (int i = 0; i < cantLCD; i++)
             {
-                pesoLCD = _distribucion.GenerarUniforme(11, 49);
+                pesoLCD += _distribucion.GenerarUniforme(11, 49);
             }
             for (int i = 0; i < cantLED; i++)
             {
-                pesoLED = _distribucion.GenerarUniforme(11, 39);
+                pesoLED += _distribucion.GenerarUniforme(11, 39);
             }
 
             _pesoTotalCRT += pesoCRT;
