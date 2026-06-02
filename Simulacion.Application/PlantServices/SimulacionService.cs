@@ -29,11 +29,15 @@ namespace Simulacion.Application.PlantServices
             _distribution = distribution;
         }
 
-        public ResultadoSimulacion Ejecutar(int dias = 30, int camionetasPorDia = 5)
+        public ResultadoSimulacion Ejecutar(
+            int dias = 30,
+            int camionetasPorDia = 5,
+            double capacidadAlmacenM3 = 375.0,
+            int operariosCRT = 2,
+            int operariosPlanas = 3)
         {
             var resumenPorDia = new List<ResumenDia>();
 
-            // Estado global de inventario
             int inventarioCRT = 0;
             int inventarioLCD = 0;
             int inventarioLED = 0;
@@ -43,11 +47,14 @@ namespace Simulacion.Application.PlantServices
             {
                 var resumenDia = new ResumenDia { Dia = dia };
 
-                // Registrar stock inicial
+                // Stock al inicio del día (remanente del día anterior)
                 resumenDia.StockInicialCRT = inventarioCRT;
                 resumenDia.StockInicialLCD = inventarioLCD;
                 resumenDia.StockInicialLED = inventarioLED;
 
+                // ── RECEPCIÓN DE CAMIONETAS ──────────────────────────────────────
+                // Se evalúa el espacio DESPUÉS de cada camioneta para reflejar
+                // la mecánica de descuento de espacio en tiempo real del modelo verbal
                 for (int camion = 0; camion < camionetasPorDia; camion++)
                 {
                     var llegada = _llegada.ProcesarNuevaCamioneta();
@@ -61,80 +68,98 @@ namespace Simulacion.Application.PlantServices
                         inventarioLCD += segmentacion.TotalLCD;
                         inventarioLED += segmentacion.TotalLED;
 
-                        // Comprobar política de rechazo (100% de 375 m2)
-                        double espacioOcupado = (inventarioCRT * 0.0525) + (inventarioLCD * 0.08) + (inventarioLED * 0.05);
-                        if (espacioOcupado >= 375.0)
+                        // Área en piso por unidad (m²) con apilamiento aplicado
+                        // CRT: volumen 0.21m³ / altura torre 1.80m (4 niveles × 0.45m) = 0.1167 m²
+                        // LCD: volumen 0.08m³ / altura torre 0.45m (3 niveles × 0.15m) = 0.1778 m²
+                        // LED: volumen 0.05m³ / altura torre 0.36m (3 niveles × 0.12m) = 0.1389 m²
+                        double areaOcupada = (inventarioCRT * 0.1167)
+                                           + (inventarioLCD * 0.1778)
+                                           + (inventarioLED * 0.1389);
+
+                        if (areaOcupada >= capacidadAlmacenM3)
                         {
                             politicaRechazoActiva = true;
+                            resumenDia.CamionetasRechazadas++;
                         }
+                    }
+                    else
+                    {
+                        resumenDia.CamionetasRechazadas++;
                     }
                 }
 
-                // Desmantelamiento (Cuello de botella)
-                int minutosDisponiblesCRT = 480 * 2; // 2 operarios
+                // ── DESMANTELAMIENTO CRT ─────────────────────────────────────────
+                // 2 operarios, tiempo UNIF(20, 40) min según modelo verbal
+                int minutosDisponiblesCRT = 480 * operariosCRT;
                 int procesadosCRT = 0;
                 while (inventarioCRT > 0)
                 {
-                    double tiempo = _distribution.GenerarUniforme(25, 45);
+                    double tiempo = _distribution.GenerarUniforme(20, 40);
                     if (minutosDisponiblesCRT >= tiempo)
                     {
                         minutosDisponiblesCRT -= (int)Math.Ceiling(tiempo);
                         inventarioCRT--;
                         procesadosCRT++;
                     }
-                    else
-                    {
-                        break;
-                    }
+                    else break;
                 }
 
-                int minutosDisponiblesPlanas = 480 * 3; // 3 operarios compartidos
+                // ── DESMANTELAMIENTO LCD/LED ─────────────────────────────────────
+                // 3 operarios compartidos, tiempo UNIF(10, 15) min según modelo verbal
+                int minutosDisponiblesPlanas = 480 * operariosPlanas;
                 int procesadosLCD = 0;
                 while (inventarioLCD > 0)
                 {
-                    double tiempo = _distribution.GenerarUniforme(20, 35);
+                    double tiempo = _distribution.GenerarUniforme(10, 15);
                     if (minutosDisponiblesPlanas >= tiempo)
                     {
                         minutosDisponiblesPlanas -= (int)Math.Ceiling(tiempo);
                         inventarioLCD--;
                         procesadosLCD++;
                     }
-                    else
-                    {
-                        break;
-                    }
+                    else break;
                 }
 
                 int procesadosLED = 0;
                 while (inventarioLED > 0)
                 {
-                    double tiempo = _distribution.GenerarUniforme(15, 25);
+                    double tiempo = _distribution.GenerarUniforme(10, 15);
                     if (minutosDisponiblesPlanas >= tiempo)
                     {
                         minutosDisponiblesPlanas -= (int)Math.Ceiling(tiempo);
                         inventarioLED--;
                         procesadosLED++;
                     }
-                    else
-                    {
-                        break;
-                    }
+                    else break;
                 }
 
-                // Comprobar si se desactiva la política de rechazo (<= 50% de 375 m2)
-                double espacioFinal = (inventarioCRT * 0.0525) + (inventarioLCD * 0.08) + (inventarioLED * 0.05);
-                if (politicaRechazoActiva && espacioFinal <= 187.5)
-                {
+                // ── POLÍTICA DE REAPERTURA ───────────────────────────────────────
+                // Se rehabilita la recepción cuando el stock baja al 50% de capacidad
+                double areaFinal = (inventarioCRT * 0.1167)
+                                 + (inventarioLCD * 0.1778)
+                                 + (inventarioLED * 0.1389);
+
+                if (politicaRechazoActiva && areaFinal <= capacidadAlmacenM3 * 0.5)
                     politicaRechazoActiva = false;
-                }
 
-                // Registrar stock final y ocupación
+                // ── MÉTRICAS DE CUELLO DE BOTELLA ────────────────────────────────
+                // Utilización = minutos consumidos / minutos totales disponibles × 100
+                int minutosTotalesCRT = 480 * operariosCRT;
+                int minutosTotalesPlanas = 480 * operariosPlanas;
+
+                resumenDia.UtilizacionOperariosCRT = Math.Round(
+                    (double)(minutosTotalesCRT - minutosDisponiblesCRT) / minutosTotalesCRT * 100, 2);
+
+                resumenDia.UtilizacionOperariosPlanas = Math.Round(
+                    (double)(minutosTotalesPlanas - minutosDisponiblesPlanas) / minutosTotalesPlanas * 100, 2);
+
+                // ── STOCK FINAL Y OCUPACIÓN ──────────────────────────────────────
                 resumenDia.StockFinalCRT = inventarioCRT;
                 resumenDia.StockFinalLCD = inventarioLCD;
                 resumenDia.StockFinalLED = inventarioLED;
-                resumenDia.PorcentajeAlmacenamientoOcupado = Math.Round((espacioFinal / 375.0) * 100, 2);
+                resumenDia.PorcentajeAlmacenamientoOcupado = Math.Round((areaFinal / capacidadAlmacenM3) * 100, 2);
 
-                // Cálculos posteriores basados en lo PROCESADO en el día, no lo llegado
+                // ── CÁLCULOS SOBRE LO PROCESADO ──────────────────────────────────
                 resumenDia.TotalDesmantelamiento = procesadosCRT + procesadosLCD + procesadosLED;
                 resumenDia.TotalCRT = procesadosCRT;
                 resumenDia.TotalLCD = procesadosLCD;
@@ -153,7 +178,14 @@ namespace Simulacion.Application.PlantServices
                 resumenDia.PesoToxiKg += Math.Round(toxicas.PesoToxicoKg, 2);
                 resumenDia.CostoDisposicionToxico += toxicas.CostoDisposicion;
 
-                var balance = _balance.ProcesarDia(dia, resumenDia.TotalRefurbishment, resumenDia.PesoTotalKg, resumenDia.TotalCobreKG, resumenDia.TotalPCBKg, resumenDia.CostoDisposicionToxico);
+                var balance = _balance.ProcesarDia(
+                    dia,
+                    resumenDia.TotalRefurbishment,
+                    resumenDia.PesoTotalKg,
+                    resumenDia.TotalCobreKG,
+                    resumenDia.TotalPCBKg,
+                    resumenDia.CostoDisposicionToxico);
+
                 resumenDia.IngresosDia = balance.IngresosDia;
                 resumenDia.CostosDia = balance.CostosDia;
                 resumenDia.GananciaDia = balance.GananciaDia;
@@ -183,7 +215,16 @@ namespace Simulacion.Application.PlantServices
                     TotalPesoPlata = Math.Round(resumenPorDia.Sum(d => d.TotalPlataKG), 2),
                     IngresosTotales = Math.Round(resumenPorDia.Sum(d => d.IngresosDia), 2),
                     CostosTotales = Math.Round(resumenPorDia.Sum(d => d.CostosDia), 2),
-                    GananciaNeta = Math.Round(resumenPorDia.Sum(d => d.GananciaDia), 2)
+                    GananciaNeta = Math.Round(resumenPorDia.Sum(d => d.GananciaDia), 2),
+                    // ── NUEVOS: métricas de cuello de botella ──
+                    UtilizacionPromedioCRT = Math.Round(
+                        resumenPorDia.Average(d => d.UtilizacionOperariosCRT), 2),
+                    UtilizacionPromedioPlanas = Math.Round(
+                        resumenPorDia.Average(d => d.UtilizacionOperariosPlanas), 2),
+                    DiasSaturacionCRT = resumenPorDia.Count(d => d.StockFinalCRT > 0),
+                    DiasSaturacionPlanas = resumenPorDia.Count(d => d.StockFinalLCD > 0
+                                                                 || d.StockFinalLED > 0),
+                    TotalCamionetasRechazadas = resumenPorDia.Sum(d => d.CamionetasRechazadas)
                 }
             };
         }

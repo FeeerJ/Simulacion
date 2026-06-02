@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +23,11 @@ namespace Simulacion.Domain.Entities
         public double IngresosTotales { get; set; }
         public double CostosTotales { get; set; }    
         public double GananciaNeta { get; set; }     
+
+        public double UtilizacionPromedioCRT { get; set; }    // promedio de utilización CRT en 30 días
+        public double UtilizacionPromedioPlanas { get; set; } // promedio de utilización planas en 30 días
+        public int DiasSaturacionCRT { get; set; }            // días donde quedó stock CRT sin procesar
+        public int DiasSaturacionPlanas { get; set; }         // días donde quedó stock LCD o LED sin procesar
+        public int TotalCamionetasRechazadas { get; set; }    // total de camionetas rechazadas en 30 días
     }
 }

@@ -36,6 +36,10 @@ namespace Simulacion.Domain.Entities
         public double CostosDia { get; set; }     
         public double GananciaDia { get; set; }     
         public double PCBacumuladoKg { get; set; }  
+        
+        public double UtilizacionOperariosCRT { get; set; }    // % uso operarios CRT en el día
+        public double UtilizacionOperariosPlanas { get; set; } // % uso operarios LCD/LED en el día
+        public int CamionetasRechazadas { get; set; }          // camionetas rechazadas por almacén lleno
     }
 }
 
