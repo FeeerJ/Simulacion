@@ -1,4 +1,4 @@
-﻿using Simulacion.Domain.Interfaces;
+using Simulacion.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +10,23 @@ namespace Simulacion.Application.PlantServices
     public class DistributionService: IDistribution
          /*Se define como se van a calcular las diversas distribuciones de probabalidad, en base al metodo de generacion pseudoaleatorio definido en el DiagnosticsController*/
     {
-        private readonly Queue<double> _numerosPseudoAleatorios;
+        private readonly List<double> _numerosPseudoAleatorios;
+        private int _index = 0;
+
         public DistributionService(IEnumerable<double> numerosGenerados)
         {
-            _numerosPseudoAleatorios = new Queue<double>(numerosGenerados);
+            _numerosPseudoAleatorios = numerosGenerados.ToList();
+            if (_numerosPseudoAleatorios.Count == 0)
+            {
+                _numerosPseudoAleatorios.Add(0.5); // Prevenir división por cero o lista vacía
+            }
         }
 
         private double sacarNumero()
         {
-            if (_numerosPseudoAleatorios.Count == 0)
-            {
-                throw new InvalidOperationException("No hay más números pseudoaleatorios disponibles.");
-            }
-            return _numerosPseudoAleatorios.Dequeue();
+            double u = _numerosPseudoAleatorios[_index];
+            _index = (_index + 1) % _numerosPseudoAleatorios.Count;
+            return u;
         }
 
         public double GenerarBinomial(double n, double p)
@@ -31,19 +35,11 @@ namespace Simulacion.Application.PlantServices
             int exitos = 0;
             for (int i = 0; i < n; i++)
             {
-                if (_numerosPseudoAleatorios.TryDequeue(out double u))
+                double u = sacarNumero();
+                if (u < p)
                 {
-                    if (u < p)
-                    {
-                        exitos++;
-                    }
-                    else
-                    {
-                      
-                    }
+                    exitos++;
                 }
-                
-
             }
             return exitos;
         }

@@ -1,4 +1,4 @@
-
+ï»¿
 using Simulacion.Application.PlantServices;
 using Simulacion.Application.Services;
 using Simulacion.Domain.Interfaces;
@@ -33,19 +33,19 @@ namespace Simulacion
             builder.Services.AddScoped<LehmerService>();
             builder.Services.AddScoped<CongruentialMethodService>();
             /**/
-            builder.Services.AddSingleton<IDistribution>(provider =>
+            builder.Services.AddScoped<IDistribution>(provider =>
             {
                 var generador = new CongruentialMethodService();
-                var semilla = DateTime.Now.Ticks % 100000; // Generar una semilla basada en el tiempo actual, se toma el modulo de 100000 para limitar su tamaño
+                var semilla = DateTime.Now.Ticks % 100000; // Generar una semilla basada en el tiempo actual, se toma el modulo de 100000 para limitar su tamaï¿½o
                 var listaU = generador.GenerateMixed(100000, semilla, 1021, 3, 99000);
                 return new DistributionService(listaU);
             });
-            builder.Services.AddSingleton<LlegadaService>();
-            builder.Services.AddSingleton<SegmentacionService>();
+            builder.Services.AddScoped<LlegadaService>();
+            builder.Services.AddScoped<SegmentacionService>();
             builder.Services.AddScoped<SimulacionService>();
-            builder.Services.AddSingleton<PesoService>();
-            builder.Services.AddSingleton<SustanciasToxicasService>();
-            builder.Services.AddSingleton<ExtraccionMaterialesService>();
+            builder.Services.AddScoped<PesoService>();
+            builder.Services.AddScoped<SustanciasToxicasService>();
+            builder.Services.AddScoped<ExtraccionMaterialesService>();
             builder.Services.AddScoped<BalanceFinancieroService>();
             /**/
             builder.Services.AddScoped<StatisticalTestsService>();

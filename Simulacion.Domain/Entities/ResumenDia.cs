@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +18,15 @@ namespace Simulacion.Domain.Entities
         public double PesoTotalKg { get; set; }
         public double PesoToxiKg { get; set; }
         public double CostoDisposicionToxico { get; set; }
+
+        // Nuevas propiedades para inventario y cuello de botella
+        public int StockInicialCRT { get; set; }
+        public int StockInicialLCD { get; set; }
+        public int StockInicialLED { get; set; }
+        public int StockFinalCRT { get; set; }
+        public int StockFinalLCD { get; set; }
+        public int StockFinalLED { get; set; }
+        public double PorcentajeAlmacenamientoOcupado { get; set; }
 
         public double TotalCobreKG { get; set; }  
         public double TotalOroKG { get; set; }    
