@@ -25,8 +25,8 @@ namespace Simulacion.Application.PlantServices
 
         public ResultadoCamioneta ProcesarNuevaCamioneta()
         {
-            int cantDispositivos = (int)_distribuciones.GenerarNormal(50, 10);
-            int cantTVMonitores = (int)_distribuciones.GenerarBinomial(cantDispositivos, 0.095);
+            int cantDispositivos = (int)_distribuciones.GenerarNormal(80, 15);
+            int cantTVMonitores = (int)_distribuciones.GenerarBinomial(cantDispositivos, 0.20);
 
             /*Probabilidad de que estas TV/Monitores sean aptos vs descartados (90-10)*/
             int cantAptos = (int)_distribuciones.GenerarBinomial(cantTVMonitores, 0.9);
