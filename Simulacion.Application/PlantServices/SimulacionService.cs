@@ -190,6 +190,7 @@ namespace Simulacion.Application.PlantServices
                 resumenDia.CostosDia = balance.CostosDia;
                 resumenDia.GananciaDia = balance.GananciaDia;
                 resumenDia.PCBacumuladoKg = balance.PCBacumuladoKg;
+                resumenDia.HuboDespachoFlete = balance.HuboDespachoFlete;
 
                 resumenPorDia.Add(resumenDia);
             }

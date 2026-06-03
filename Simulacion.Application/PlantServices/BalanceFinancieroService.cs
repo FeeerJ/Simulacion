@@ -1,4 +1,5 @@
-﻿using Simulacion.Domain.Entities;
+using Simulacion.Domain.Entities;
+using Simulacion.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,19 @@ namespace Simulacion.Application.PlantServices
 {
     public class BalanceFinancieroService
     {
+        private readonly IDistribution _distribution;
         private double _pcbAcumuladoKg = 0;
         private double _pesoComunesAcumuladoKg = 0;
         private double _ingresosTotales = 0;
         private double _costosTotales = 0;
+        private int _proximoDiaFlete;
+
+        public BalanceFinancieroService(IDistribution distribution)
+        {
+            _distribution = distribution;
+            // Inicializa esta variable para que el primer flete ocurra sumando al día 0
+            _proximoDiaFlete = (int)Math.Round(_distribution.GenerarExponencial(15));
+        }
 
         public ResultadoBalanceDia ProcesarDia(
             int dia,
@@ -24,6 +34,7 @@ namespace Simulacion.Application.PlantServices
         {
             double ingresosDia = 0;
             double costosDia = 0;
+            bool huboDespacho = false;
 
             // ingreso por refurbishment
             ingresosDia += refurbishment * 100;
@@ -31,18 +42,25 @@ namespace Simulacion.Application.PlantServices
             // acumula PCB
             _pcbAcumuladoKg += pcbKg;
 
-            // mteriales comunes del día 
+            // materiales comunes del día 
             double comunesDia = pesoTotalKg - cobreKg - pcbKg;
             _pesoComunesAcumuladoKg += comunesDia;
 
             // costo por sustancias tóxicas
             costosDia += costoToxicos;
 
-            // flete genérico cada 15 días si hay stock de mat comun
-            if ((dia == 15 || dia == 30) && _pesoComunesAcumuladoKg > 0)
+            // Flete genérico usando el tiempo dinámico y distribución exponencial
+            if (dia >= _proximoDiaFlete && _pesoComunesAcumuladoKg > 0)
             {
+                // Suma el costo logístico
                 costosDia += 120;
-                _pesoComunesAcumuladoKg = 0; // Se despacha el stock
+                
+                // Se despacha el stock, reinicia el acumulador
+                _pesoComunesAcumuladoKg = 0; 
+                huboDespacho = true;
+
+                // Programa el próximo flete
+                _proximoDiaFlete = dia + (int)Math.Round(_distribution.GenerarExponencial(15));
             }
 
             // Al día 30 evaluar PCB
@@ -66,7 +84,8 @@ namespace Simulacion.Application.PlantServices
                 PCBacumuladoKg = Math.Round(_pcbAcumuladoKg, 4),
                 IngresosTotalesAcumulados = Math.Round(_ingresosTotales, 2),
                 CostosTotalesAcumulados = Math.Round(_costosTotales, 2),
-                GananciaNetaAcumulada = Math.Round(_ingresosTotales - _costosTotales, 2)
+                GananciaNetaAcumulada = Math.Round(_ingresosTotales - _costosTotales, 2),
+                HuboDespachoFlete = huboDespacho
             };
         }
     }

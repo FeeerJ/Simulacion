@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net8.0": {
       "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
@@ -88,6 +88,29 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Simulacion.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Simulacion.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Simulacion.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Simulacion.Application.dll": {}
+        }
+      },
+      "Simulacion.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Simulacion.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Simulacion.Domain.dll": {}
+        }
       }
     }
   },
@@ -439,31 +462,42 @@
         "swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Simulacion.Application/1.0.0": {
+      "type": "project",
+      "path": "../Simulacion.Application/Simulacion.Application.csproj",
+      "msbuildProject": "../Simulacion.Application/Simulacion.Application.csproj"
+    },
+    "Simulacion.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Simulacion.Domain/Simulacion.Domain.csproj",
+      "msbuildProject": "../Simulacion.Domain/Simulacion.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Simulacion.Application >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fer_s\\.nuget\\packages\\": {},
+    "C:\\Users\\nacho\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Programas\\Proyecto\\Simulacion\\Simulacion\\Simulacion.csproj",
+      "projectUniqueName": "C:\\Users\\nacho\\Desktop\\Simulacion\\Simulacion\\Simulacion\\Simulacion.csproj",
       "projectName": "Simulacion",
-      "projectPath": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Programas\\Proyecto\\Simulacion\\Simulacion\\Simulacion.csproj",
-      "packagesPath": "C:\\Users\\fer_s\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fer_s\\OneDrive\\Desktop\\Programas\\Proyecto\\Simulacion\\Simulacion\\obj\\",
+      "projectPath": "C:\\Users\\nacho\\Desktop\\Simulacion\\Simulacion\\Simulacion\\Simulacion.csproj",
+      "packagesPath": "C:\\Users\\nacho\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nacho\\Desktop\\Simulacion\\Simulacion\\Simulacion\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\fer_s\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nacho\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -476,8 +510,13 @@
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\nacho\\Desktop\\Simulacion\\Simulacion\\Simulacion.Application\\Simulacion.Application.csproj": {
+              "projectPath": "C:\\Users\\nacho\\Desktop\\Simulacion\\Simulacion\\Simulacion.Application\\Simulacion.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -490,10 +529,11 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net8.0": {
+        "framework": "net8.0",
         "targetAlias": "net8.0",
         "dependencies": {
           "Swashbuckle.AspNetCore": {
@@ -520,7 +560,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

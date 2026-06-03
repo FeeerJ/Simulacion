@@ -40,6 +40,7 @@ namespace Simulacion.Domain.Entities
         public double UtilizacionOperariosCRT { get; set; }    // % uso operarios CRT en el día
         public double UtilizacionOperariosPlanas { get; set; } // % uso operarios LCD/LED en el día
         public int CamionetasRechazadas { get; set; }          // camionetas rechazadas por almacén lleno
+        public bool HuboDespachoFlete { get; set; }
     }
 }
 

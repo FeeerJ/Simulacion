@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +16,6 @@ namespace Simulacion.Domain.Entities
         public double IngresosTotalesAcumulados { get; set; }
         public double CostosTotalesAcumulados { get; set; }
         public double GananciaNetaAcumulada { get; set; }
+        public bool HuboDespachoFlete { get; set; }
     }
 }
