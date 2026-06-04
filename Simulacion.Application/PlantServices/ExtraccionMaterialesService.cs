@@ -23,6 +23,7 @@ namespace Simulacion.Application.PlantServices
             _distribuciones = distribuciones;
         }
 
+                // Simula la extraccion de materiales valiosos y toxicos de cada lote procesado
         public ResultadoExtraccion ExtraerMateriales(int cantCRT, int cantLCD, int cantLED)
         {
             var extraccionesCRT = new List<ExtraccionUnidad>();

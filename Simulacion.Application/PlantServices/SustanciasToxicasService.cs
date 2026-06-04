@@ -20,6 +20,7 @@ namespace Simulacion.Application.PlantServices
             _distribuciones = distribucion;
         }
 
+                // Determina la proporcion toxica y calcula el costo asociado a su disposicion segura
         public ResultadoSustanciasToxicas ProcesarSustancias(double pesoTotalLote)
         {
             double pesoToxico = pesoTotalLote * 0.03;

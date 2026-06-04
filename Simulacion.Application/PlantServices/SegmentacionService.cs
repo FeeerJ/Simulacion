@@ -21,6 +21,7 @@ namespace Simulacion.Application.PlantServices
             _distribuciones = distribuciones;
         }
 
+                // Segmenta los dispositivos aptos en diferentes tipos (CRT, LCD, LED) y aparta los de refurbishment
         public ResultadoSegmentacion ProcesoSegmentar(int aptos)
         {
             int crt = 0;

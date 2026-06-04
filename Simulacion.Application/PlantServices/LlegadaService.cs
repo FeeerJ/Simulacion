@@ -23,6 +23,7 @@ namespace Simulacion.Application.PlantServices
             _distribuciones = distribuciones;
         }
 
+                // Simula la llegada de una camioneta con dispositivos y filtra los que aplican (TVs/Monitores)
         public ResultadoCamioneta ProcesarNuevaCamioneta()
         {
             int cantDispositivos = (int)_distribuciones.GenerarNormal(80, 15);

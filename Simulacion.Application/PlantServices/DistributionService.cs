@@ -29,6 +29,7 @@ namespace Simulacion.Application.PlantServices
             return u;
         }
 
+                // Genera un valor siguiendo la distribucion Binomial (util para proporciones)
         public double GenerarBinomial(double n, double p)
         {
             

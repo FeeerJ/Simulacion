@@ -28,6 +28,7 @@ namespace Simulacion.Application.PlantServices
             _distribucion = distribuciones;
         }
 
+                // Calcula el peso total de los dispositivos basados en sus distribuciones estadisticas
         public ResultadoPeso CalcularPeso(int cantCRT, int cantLCD, int cantLED)
         {
             double pesoCRT = 0;

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ public class StatisticalTestsService
     public PruebaPromediosResultDto PruebaPromedios(List<double> numeros, double zAlfa)
     {
         int n = numeros.Count;
-        if (n == 0) throw new ArgumentException("La lista de números no puede estar vacía.");
+        if (n == 0) throw new ArgumentException("La lista de nÃºmeros no puede estar vacÃ­a.");
 
 
         double promedio = numeros.Average();
@@ -36,8 +36,8 @@ public class StatisticalTestsService
             ZAlfa = zAlfa,
             PasaPrueba = pasaPrueba,
             Mensaje = pasaPrueba
-                ? "No se rechaza la hipótesis de que los números provienen de un universo uniformemente distribuido."
-                : "Se rechaza la hipótesis. Los números NO provienen de un universo uniformemente distribuido."
+                ? "No se rechaza la hipÃ³tesis de que los nÃºmeros provienen de un universo uniformemente distribuido."
+                : "Se rechaza la hipÃ³tesis. Los nÃºmeros NO provienen de un universo uniformemente distribuido."
         };
     }
 
@@ -46,8 +46,8 @@ public class StatisticalTestsService
     public PruebaFrecuenciaResultDto PruebaFrecuencia(List<double> numeros, int x, double chiCuadradoAlfa)
     {
         int n = numeros.Count;
-        if (n == 0) throw new ArgumentException("La lista de números no puede estar vacía.");
-        if (x <= 0) throw new ArgumentException("El número de subintervalos (x) debe ser mayor a cero.");
+        if (n == 0) throw new ArgumentException("La lista de nÃºmeros no puede estar vacÃ­a.");
+        if (x <= 0) throw new ArgumentException("El nÃºmero de subintervalos (x) debe ser mayor a cero.");
 
 
         double fe = (double)n / x;
@@ -91,15 +91,15 @@ public class StatisticalTestsService
             ChiCuadradoAlfa = chiCuadradoAlfa,
             PasaPrueba = pasaPrueba,
             Mensaje = pasaPrueba
-                ? "No se rechaza la hipótesis de que los números provienen de un universo uniformemente distribuido."
-                : "Se rechaza la hipótesis. Los números NO provienen de un universo uniformemente distribuido."
+                ? "No se rechaza la hipÃ³tesis de que los nÃºmeros provienen de un universo uniformemente distribuido."
+                : "Se rechaza la hipÃ³tesis. Los nÃºmeros NO provienen de un universo uniformemente distribuido."
         };
     }
 
     public PruebaSerieResultDto PruebaSerie(List<double> numeros, int x, double chiCuadradoAlfa)
     {
         int cantidadNumeros = numeros.Count;
-        if (cantidadNumeros < 2) throw new ArgumentException("Se necesitan al menos 2 números para formar un par.");
+        if (cantidadNumeros < 2) throw new ArgumentException("Se necesitan al menos 2 nÃºmeros para formar un par.");
         if (x <= 0) throw new ArgumentException("El valor de subdivisiones (x) debe ser mayor a cero.");
 
 
@@ -154,15 +154,15 @@ public class StatisticalTestsService
             ChiCuadradoAlfa = chiCuadradoAlfa,
             PasaPrueba = pasaPrueba,
             Mensaje = pasaPrueba
-                ? "No se rechaza la hipótesis de que los números provienen de un universo uniformemente distribuido."
-                : "Se rechaza la hipótesis. Los números NO provienen de un universo uniformemente distribuido."
+                ? "No se rechaza la hipÃ³tesis de que los nÃºmeros provienen de un universo uniformemente distribuido."
+                : "Se rechaza la hipÃ³tesis. Los nÃºmeros NO provienen de un universo uniformemente distribuido."
         };
     }
 
     public PruebaKSResultDto PruebaKS(List<double> numeros, double dAlfaN)
     {
         int n = numeros.Count;
-        if (n == 0) throw new ArgumentException("La lista de números no puede estar vacía.");
+        if (n == 0) throw new ArgumentException("La lista de nÃºmeros no puede estar vacÃ­a.");
 
 
         var ordenados = numeros.OrderBy(x => x).ToList();
@@ -203,15 +203,15 @@ public class StatisticalTestsService
             DAlfaN = dAlfaN,
             PasaPrueba = pasaPrueba,
             Mensaje = pasaPrueba
-                ? "No se rechaza la hipótesis de que los números provienen de un universo uniformemente distribuido."
-                : "Se rechaza la hipótesis. Los números NO provienen de un universo uniformemente distribuido."
+                ? "No se rechaza la hipÃ³tesis de que los nÃºmeros provienen de un universo uniformemente distribuido."
+                : "Se rechaza la hipÃ³tesis. Los nÃºmeros NO provienen de un universo uniformemente distribuido."
         };
     }
 
     public PruebaCorridasResultDto PruebaCorridasMedia(List<double> numeros, double chiCuadradoAlfa)
     {
         int n = numeros.Count;
-        if (n == 0) throw new ArgumentException("La lista de números no puede estar vacía.");
+        if (n == 0) throw new ArgumentException("La lista de nÃºmeros no puede estar vacÃ­a.");
 
 
         List<int> secuenciaS = numeros.Select(u => u <= 0.5 ? 0 : 1).ToList();
@@ -276,9 +276,10 @@ public class StatisticalTestsService
             ChiCuadradoAlfa = chiCuadradoAlfa,
             PasaPrueba = pasaPrueba,
             Mensaje = pasaPrueba
-                ? "No se rechaza la hipótesis de que los números provienen de un universo uniformemente distribuido."
-                : "Se rechaza la hipótesis. Los números NO provienen de un universo uniformemente distribuido."
+                ? "No se rechaza la hipÃ³tesis de que los nÃºmeros provienen de un universo uniformemente distribuido."
+                : "Se rechaza la hipÃ³tesis. Los nÃºmeros NO provienen de un universo uniformemente distribuido."
         };
     }
 }
+
 
