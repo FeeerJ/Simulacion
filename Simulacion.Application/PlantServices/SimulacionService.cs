@@ -51,9 +51,9 @@ namespace Simulacion.Application.PlantServices
                 // usando el stock remanente del día anterior (ya desmantelado).
                 // Antes se evaluaba al FINAL del mismo día en que saturó,
                 // lo que permitía reabrir sin que pasara un día completo de rechazo.
-                double areaInicial = (inventarioCRT * 0.1167)
-                                   + (inventarioLCD * 0.1778)
-                                   + (inventarioLED * 0.1389);
+                double areaInicial = (inventarioCRT * 0.21)
+                                   + (inventarioLCD * 0.08)
+                                   + (inventarioLED * 0.05);
 
                 if (politicaRechazoActiva && areaInicial <= capacidadAlmacenM3 * 0.5)
                     politicaRechazoActiva = false; // Reapertura válida: el stock ya bajó al 50%
@@ -72,9 +72,9 @@ namespace Simulacion.Application.PlantServices
                     // Si ya está saturado, se rechaza sin procesar.
                     // Antes, el área se calculaba DESPUÉS de agregar el inventario,
                     // lo que permitía que la camioneta que causaba la saturación fuera procesada igual.
-                    double areaActual = (inventarioCRT * 0.1167)
-                                      + (inventarioLCD * 0.1778)
-                                      + (inventarioLED * 0.1389);
+                    double areaActual = (inventarioCRT * 0.21)
+                                      + (inventarioLCD * 0.08)
+                                      + (inventarioLED * 0.05);
 
                     if (politicaRechazoActiva || areaActual >= capacidadAlmacenM3)
                     {
@@ -144,9 +144,9 @@ namespace Simulacion.Application.PlantServices
 
                 // ── OCUPACIÓN AL FINAL DEL DÍA ───────────────────────────────────
                 // Se calcula el área final para el reporte
-                double areaFinal = (inventarioCRT * 0.1167)
-                                 + (inventarioLCD * 0.1778)
-                                 + (inventarioLED * 0.1389);
+                double areaFinal = (inventarioCRT * 0.21)
+                                 + (inventarioLCD * 0.08)
+                                 + (inventarioLED * 0.05);
 
                 // ── MÉTRICAS DE CUELLO DE BOTELLA ────────────────────────────────
                 // Utilización = minutos consumidos / minutos totales disponibles × 100
