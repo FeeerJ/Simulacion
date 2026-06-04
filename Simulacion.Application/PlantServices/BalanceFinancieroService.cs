@@ -20,6 +20,7 @@ namespace Simulacion.Application.PlantServices
             _distribution = distribution;
         }
 
+        // Procesa el balance financiero diario (ingresos y costos) de la planta
         public ResultadoBalanceDia ProcesarDia(
             int dia,
             int refurbishment,
@@ -33,33 +34,34 @@ namespace Simulacion.Application.PlantServices
             bool huboDespacho = false;
 
 
+            // Ingresos por equipos que aplican a refurbishment
             ingresosDia += refurbishment * 100;
 
-
+            // Acumular kilogramos de PCB
             _pcbAcumuladoKg += pcbKg;
 
-
+            // Los materiales comunes se calculan restando el cobre y el pcb
             double comunesDia = pesoTotalKg - cobreKg - pcbKg;
             _pesoComunesAcumuladoKg += comunesDia;
 
-
+            // Sumar los costos de disposición de las sustancias tóxicas de este día
             costosDia += costoToxicos;
 
-
+            // Despacho quincenal de materiales comunes
             if ((dia == 15 || dia == 30) && _pesoComunesAcumuladoKg > 0)
             {
-                costosDia += 120;
+                costosDia += 120; // Costo de flete
                 _pesoComunesAcumuladoKg = 0;
                 huboDespacho = true;
             }
 
-
+            // Liquidación mensual del lote de PCB
             if (dia == 30)
             {
                 if (_pcbAcumuladoKg >= 50)
-                    ingresosDia += 8500;
+                    ingresosDia += 8500; // Ingreso por venta de lote
                 else
-                    costosDia += 350;
+                    costosDia += 350;    // Costo si no se alcanza el peso mínimo
             }
 
             _ingresosTotales += ingresosDia;

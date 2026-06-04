@@ -29,6 +29,8 @@ namespace Simulacion.Application.PlantServices
             _distribution = distribution;
         }
 
+        // Ejecuta la simulación de la planta por un número determinado de días
+        // Retorna un objeto ResultadoSimulacion con el resumen de cada día y los totales
         public ResultadoSimulacion Ejecutar(
             int dias = 30,
             int camionetasPorDia = 5,
@@ -38,11 +40,14 @@ namespace Simulacion.Application.PlantServices
         {
             var resumenPorDia = new List<ResumenDia>();
 
+            // Inventario inicial en 0
             int inventarioCRT = 0;
             int inventarioLCD = 0;
             int inventarioLED = 0;
+            // Política para detener ingreso de camionetas si el almacén está lleno
             bool politicaRechazoActiva = false;
 
+            // Bucle principal: simula la operación de la planta día a día
             for (int dia = 1; dia <= dias; dia++)
             {
                 var resumenDia = new ResumenDia { Dia = dia };
@@ -51,10 +56,12 @@ namespace Simulacion.Application.PlantServices
 
 
 
+                // Calcular volumen actual del inventario
                 double areaInicial = (inventarioCRT * 0.21)
                                    + (inventarioLCD * 0.08)
                                    + (inventarioLED * 0.05);
 
+                // Si se había alcanzado el límite, revisar si el inventario bajó al 50% para volver a recibir
                 if (politicaRechazoActiva && areaInicial <= capacidadAlmacenM3 * 0.5)
                     politicaRechazoActiva = false;
 
@@ -66,32 +73,31 @@ namespace Simulacion.Application.PlantServices
 
 
 
+                // Procesamiento de llegada de cada camioneta programada en el día
                 for (int camion = 0; camion < camionetasPorDia; camion++)
                 {
-
-
-
-
+                    // Revisar capacidad nuevamente por si se llenó con camionetas previas de este mismo día
                     double areaActual = (inventarioCRT * 0.21)
                                       + (inventarioLCD * 0.08)
                                       + (inventarioLED * 0.05);
 
                     if (politicaRechazoActiva || areaActual >= capacidadAlmacenM3)
                     {
-
-
+                        // Si el almacén está lleno, se rechaza la camioneta
                         politicaRechazoActiva = true;
                         resumenDia.CamionetasRechazadas++;
                         continue;
                     }
 
-
+                    // Registrar llegada y equipos descartados
                     var llegada = _llegada.ProcesarNuevaCamioneta();
                     resumenDia.TotalDescartados += llegada.Descartados;
 
+                    // Segmentar equipos aceptados para desmantelamiento vs refurbishment
                     var segmentacion = _segmentacion.ProcesoSegmentar(llegada.ParaDesmantelamiento);
                     resumenDia.TotalRefurbishment += segmentacion.TotalRefurbishment;
                     
+                    // Añadir al inventario los equipos listos para desmantelar
                     inventarioCRT += segmentacion.TotalCRT;
                     inventarioLCD += segmentacion.TotalLCD;
                     inventarioLED += segmentacion.TotalLED;
