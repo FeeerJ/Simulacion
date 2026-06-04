@@ -1,4 +1,4 @@
-﻿using Simulacion.Domain.Entities;
+using Simulacion.Domain.Entities;
 using Simulacion.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace Simulacion.Application.PlantServices
 
         public ResultadoSustanciasToxicas ProcesarSustancias(double pesoTotalLote)
         {
-            double pesoToxico = _distribuciones.GenerarBinomial(pesoTotalLote, 0.03); // 3$ del peso total es tóxico
+            double pesoToxico = pesoTotalLote * 0.03; // 3% del peso total es tóxico
             double costoDisposicion = pesoToxico * _distribuciones.GenerarUniforme(2.5, 5);
 
             _pesoToxicoTotal += pesoToxico;
