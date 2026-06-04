@@ -47,6 +47,17 @@ namespace Simulacion.Application.PlantServices
             {
                 var resumenDia = new ResumenDia { Dia = dia };
 
+                // CORRECCIÓN: La reapertura se evalúa al INICIO de cada día,
+                // usando el stock remanente del día anterior (ya desmantelado).
+                // Antes se evaluaba al FINAL del mismo día en que saturó,
+                // lo que permitía reabrir sin que pasara un día completo de rechazo.
+                double areaInicial = (inventarioCRT * 0.1167)
+                                   + (inventarioLCD * 0.1778)
+                                   + (inventarioLED * 0.1389);
+
+                if (politicaRechazoActiva && areaInicial <= capacidadAlmacenM3 * 0.5)
+                    politicaRechazoActiva = false; // Reapertura válida: el stock ya bajó al 50%
+
                 // Stock al inicio del día (remanente del día anterior)
                 resumenDia.StockInicialCRT = inventarioCRT;
                 resumenDia.StockInicialLCD = inventarioLCD;
@@ -57,35 +68,32 @@ namespace Simulacion.Application.PlantServices
                 // la mecánica de descuento de espacio en tiempo real del modelo verbal
                 for (int camion = 0; camion < camionetasPorDia; camion++)
                 {
+                    // CORRECCIÓN: Se calcula el área ocupada ANTES de recibir la camioneta.
+                    // Si ya está saturado, se rechaza sin procesar.
+                    // Antes, el área se calculaba DESPUÉS de agregar el inventario,
+                    // lo que permitía que la camioneta que causaba la saturación fuera procesada igual.
+                    double areaActual = (inventarioCRT * 0.1167)
+                                      + (inventarioLCD * 0.1778)
+                                      + (inventarioLED * 0.1389);
+
+                    if (politicaRechazoActiva || areaActual >= capacidadAlmacenM3)
+                    {
+                        // CORRECCIÓN: Se activa la política y se rechaza la camioneta actual
+                        // sin agregar su inventario al stock, evitando que el almacén supere su capacidad.
+                        politicaRechazoActiva = true;
+                        resumenDia.CamionetasRechazadas++;
+                        continue; // No procesar esta camioneta
+                    }
+
+                    // Solo se procesa si hay espacio disponible
                     var llegada = _llegada.ProcesarNuevaCamioneta();
                     resumenDia.TotalRefurbishment += llegada.ParaRefurbishment;
                     resumenDia.TotalDescartados += llegada.Descartados;
 
-                    if (!politicaRechazoActiva)
-                    {
-                        var segmentacion = _segmentacion.ProcesoSegmentar(llegada.ParaDesmantelamiento);
-                        inventarioCRT += segmentacion.TotalCRT;
-                        inventarioLCD += segmentacion.TotalLCD;
-                        inventarioLED += segmentacion.TotalLED;
-
-                        // Área en piso por unidad (m²) con apilamiento aplicado
-                        // CRT: volumen 0.21m³ / altura torre 1.80m (4 niveles × 0.45m) = 0.1167 m²
-                        // LCD: volumen 0.08m³ / altura torre 0.45m (3 niveles × 0.15m) = 0.1778 m²
-                        // LED: volumen 0.05m³ / altura torre 0.36m (3 niveles × 0.12m) = 0.1389 m²
-                        double areaOcupada = (inventarioCRT * 0.1167)
-                                           + (inventarioLCD * 0.1778)
-                                           + (inventarioLED * 0.1389);
-
-                        if (areaOcupada >= capacidadAlmacenM3)
-                        {
-                            politicaRechazoActiva = true;
-                            resumenDia.CamionetasRechazadas++;
-                        }
-                    }
-                    else
-                    {
-                        resumenDia.CamionetasRechazadas++;
-                    }
+                    var segmentacion = _segmentacion.ProcesoSegmentar(llegada.ParaDesmantelamiento);
+                    inventarioCRT += segmentacion.TotalCRT;
+                    inventarioLCD += segmentacion.TotalLCD;
+                    inventarioLED += segmentacion.TotalLED;
                 }
 
                 // ── DESMANTELAMIENTO CRT ─────────────────────────────────────────
@@ -133,14 +141,11 @@ namespace Simulacion.Application.PlantServices
                     else break;
                 }
 
-                // ── POLÍTICA DE REAPERTURA ───────────────────────────────────────
-                // Se rehabilita la recepción cuando el stock baja al 50% de capacidad
+                // ── OCUPACIÓN AL FINAL DEL DÍA ───────────────────────────────────
+                // Se calcula el área final para el reporte
                 double areaFinal = (inventarioCRT * 0.1167)
                                  + (inventarioLCD * 0.1778)
                                  + (inventarioLED * 0.1389);
-
-                if (politicaRechazoActiva && areaFinal <= capacidadAlmacenM3 * 0.5)
-                    politicaRechazoActiva = false;
 
                 // ── MÉTRICAS DE CUELLO DE BOTELLA ────────────────────────────────
                 // Utilización = minutos consumidos / minutos totales disponibles × 100
