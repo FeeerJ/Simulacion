@@ -15,13 +15,9 @@ namespace Simulacion.Application.PlantServices
         private double _pesoComunesAcumuladoKg = 0;
         private double _ingresosTotales = 0;
         private double _costosTotales = 0;
-        private int _proximoDiaFlete;
-
         public BalanceFinancieroService(IDistribution distribution)
         {
             _distribution = distribution;
-            // Inicializa esta variable para que el primer flete ocurra sumando al día 0
-            _proximoDiaFlete = (int)Math.Round(_distribution.GenerarExponencial(15));
         }
 
         public ResultadoBalanceDia ProcesarDia(
@@ -49,18 +45,12 @@ namespace Simulacion.Application.PlantServices
             // costo por sustancias tóxicas
             costosDia += costoToxicos;
 
-            // Flete genérico usando el tiempo dinámico y distribución exponencial
-            if (dia >= _proximoDiaFlete && _pesoComunesAcumuladoKg > 0)
+            // flete genérico los días 15 y 30
+            if ((dia == 15 || dia == 30) && _pesoComunesAcumuladoKg > 0)
             {
-                // Suma el costo logístico
-                costosDia += 120;
-                
-                // Se despacha el stock, reinicia el acumulador
-                _pesoComunesAcumuladoKg = 0; 
+                costosDia += 120; // Costo logístico
+                _pesoComunesAcumuladoKg = 0; // se despacha
                 huboDespacho = true;
-
-                // Programa el próximo flete
-                _proximoDiaFlete = dia + (int)Math.Round(_distribution.GenerarExponencial(15));
             }
 
             // Al día 30 evaluar PCB
