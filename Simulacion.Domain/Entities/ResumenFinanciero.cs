@@ -11,8 +11,6 @@ namespace Simulacion.Domain.Entities
         public double IngresosTotales { get; set; }
         public double CostosTotales { get; set; }
         public double GananciaNeta { get; set; }
-        public double PCBFinalKg { get; set; }
-        public bool SeExportoPCB { get; set; }
     }
 }
 
