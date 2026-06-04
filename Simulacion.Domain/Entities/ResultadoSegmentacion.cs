@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,7 @@ namespace Simulacion.Domain.Entities
         public int TotalCRT { get; set; }   // 15%
         public int TotalLCD { get; set; }   // 50%
         public int TotalLED { get; set; }   // 35%
+        public int TotalRefurbishment { get; set; }
         public int Total { get; set; }
     }
 }

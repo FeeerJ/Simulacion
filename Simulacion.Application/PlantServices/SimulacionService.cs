@@ -87,10 +87,11 @@ namespace Simulacion.Application.PlantServices
 
                     // Solo se procesa si hay espacio disponible
                     var llegada = _llegada.ProcesarNuevaCamioneta();
-                    resumenDia.TotalRefurbishment += llegada.ParaRefurbishment;
                     resumenDia.TotalDescartados += llegada.Descartados;
 
                     var segmentacion = _segmentacion.ProcesoSegmentar(llegada.ParaDesmantelamiento);
+                    resumenDia.TotalRefurbishment += segmentacion.TotalRefurbishment;
+                    
                     inventarioCRT += segmentacion.TotalCRT;
                     inventarioLCD += segmentacion.TotalLCD;
                     inventarioLED += segmentacion.TotalLED;

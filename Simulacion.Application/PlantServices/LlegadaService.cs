@@ -32,9 +32,9 @@ namespace Simulacion.Application.PlantServices
             int cantAptos = (int)_distribuciones.GenerarBinomial(cantTVMonitores, 0.9);
             int cantDescartados = cantTVMonitores - cantAptos;
 
-            /*Para aquellos que son aptos. Refurbishment vs Desmantelamiento (15/85)*/
-            int cantRefurbishment = (int)_distribuciones.GenerarBinomial(cantAptos, 0.15);
-            int cantDesmantelamiento = cantAptos - cantRefurbishment;
+            /* El reacondicionamiento y desmantelamiento real se decide después de segmentar */
+            int cantRefurbishment = 0;
+            int cantDesmantelamiento = cantAptos;
 
             /*Acumuladores*/
             _totalCamionetas++;
@@ -42,8 +42,10 @@ namespace Simulacion.Application.PlantServices
             _totalResiduosInteres += cantTVMonitores;
             _totalAptos += cantAptos;
             _totalDescartados += cantDescartados;
-            _totalRefurbishment += cantRefurbishment;
-            _totalDesmantelamiento += cantDesmantelamiento;
+            // Estos acumuladores se mantendrán en 0/cantAptos a nivel Llegada,
+            // pero el número real se obtendrá en Segmentacion.
+            _totalRefurbishment += 0;
+            _totalDesmantelamiento += cantAptos;
 
 
             return new ResultadoCamioneta
