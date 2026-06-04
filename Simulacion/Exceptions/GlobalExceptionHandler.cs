@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,7 +26,7 @@ namespace Simulacion.Exceptions
             var problemDetails = new ProblemDetails
             {
                 Status = statusCode,
-                Title = "Ocurrió un error en el simulador",
+                Title = "Ocurri� un error en el simulador",
                 Detail = exception.Message
             };
 
@@ -38,3 +38,4 @@ namespace Simulacion.Exceptions
         
     }
 }
+

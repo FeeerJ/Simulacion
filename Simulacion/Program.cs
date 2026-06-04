@@ -1,4 +1,4 @@
-﻿
+
 using Simulacion.Application.PlantServices;
 using Simulacion.Application.Services;
 using Simulacion.Domain.Interfaces;
@@ -12,13 +12,13 @@ namespace Simulacion
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            /*Configuracion de CORS*/
+            
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder =>
@@ -32,11 +32,11 @@ namespace Simulacion
             builder.Services.AddScoped<MidSquareService>();
             builder.Services.AddScoped<LehmerService>();
             builder.Services.AddScoped<CongruentialMethodService>();
-            /**/
+            
             builder.Services.AddScoped<IDistribution>(provider =>
             {
                 var generador = new CongruentialMethodService();
-                var semilla = DateTime.Now.Ticks % 100000; // Generar una semilla basada en el tiempo actual, se toma el modulo de 100000 para limitar su tama�o
+                var semilla = DateTime.Now.Ticks % 100000;
                 var listaU = generador.GenerateMixed(100000, semilla, 1021, 3, 99000);
                 return new DistributionService(listaU);
             });
@@ -47,16 +47,16 @@ namespace Simulacion
             builder.Services.AddScoped<SustanciasToxicasService>();
             builder.Services.AddScoped<ExtraccionMaterialesService>();
             builder.Services.AddScoped<BalanceFinancieroService>();
-            /**/
+            
             builder.Services.AddScoped<StatisticalTestsService>();
 
-            /*Servicios para el Middleware*/
+            
             builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
             builder.Services.AddProblemDetails();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -75,3 +75,4 @@ namespace Simulacion
         }
     }
 }
+

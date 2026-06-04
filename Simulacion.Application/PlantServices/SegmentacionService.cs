@@ -27,7 +27,7 @@ namespace Simulacion.Application.PlantServices
             int lcd = 0;
             int led = 0;
 
-            // 1. Segmentar TODOS los aptos
+
             for (int i = 0; i < aptos; i++)
             {
                 double u = _distribuciones.GenerarUniforme(0, 1);
@@ -35,22 +35,22 @@ namespace Simulacion.Application.PlantServices
                 {
                     crt++;
                 }
-                else if (u < 0.65) // Entre 0.15 y 0.65 es LCD (50%)
+                else if (u < 0.65)
                 {
                     lcd++;
                 }
-                else // Entre 0.65 y 1 es LED (35%)
+                else
                 {
                     led++;
                 }
             }
 
-            // 2. Calcular Refurbishment (15% solo de LCD y LED)
+
             int lcdRefurbished = (int)_distribuciones.GenerarBinomial(lcd, 0.15);
             int ledRefurbished = (int)_distribuciones.GenerarBinomial(led, 0.15);
             int refurbishment = lcdRefurbished + ledRefurbished;
 
-            // 3. Lo que realmente va a desmantelamiento
+
             int lcdDesmantelamiento = lcd - lcdRefurbished;
             int ledDesmantelamiento = led - ledRefurbished;
 
@@ -61,7 +61,7 @@ namespace Simulacion.Application.PlantServices
 
             return new ResultadoSegmentacion
             {
-                TotalCRT = crt, // CRT siempre va 100% a desmantelamiento
+                TotalCRT = crt,
                 TotalLCD = lcdDesmantelamiento,
                 TotalLED = ledDesmantelamiento,
                 TotalRefurbishment = refurbishment,
@@ -80,3 +80,4 @@ namespace Simulacion.Application.PlantServices
         };
     }
 }
+

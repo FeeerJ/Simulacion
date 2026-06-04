@@ -1,4 +1,4 @@
-﻿using Simulacion.Domain.Entities;
+using Simulacion.Domain.Entities;
 using Simulacion.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Simulacion.Application.PlantServices
     {
         private readonly IDistribution _distribuciones;
 
-        // Acumuladores globales
+
         private double _cobreTotalG = 0;
         private double _oroTotalG = 0;
         private double _plataTotalG = 0;
@@ -31,23 +31,23 @@ namespace Simulacion.Application.PlantServices
 
             double cobreLote = 0, oroLote = 0, plataLote = 0, pcbLote = 0;
 
-            // CRT extracción de cobre por unidad
+
             for (int i = 0; i < cantCRT; i++)
             {
-                double cobreG = _distribuciones.GenerarNormal(450, 50); // en gramos
-                double cobreKg = cobreG / 1000.0; // convertir a kg para el lote
+                double cobreG = _distribuciones.GenerarNormal(450, 50);
+                double cobreKg = cobreG / 1000.0;
                 cobreLote += cobreKg;
                 extraccionesCRT.Add(new ExtraccionUnidad { CobreG = Math.Round(cobreG, 2) });
             }
 
-            // LCD extracción de oro y plata por unidad PCB
+
             for (int i = 0; i < cantLCD; i++)
             {
                 double pcbKg = _distribuciones.GenerarUniforme(0.1, 0.2);
-                double oroG = pcbKg * _distribuciones.GenerarNormal(0.15, 0.05); // en gramos
-                double plataG = pcbKg * _distribuciones.GenerarNormal(0.30, 0.05); // en gramos
-                oroLote += oroG / 1000.0; // convertir a kg para el lote
-                plataLote += plataG / 1000.0; // convertir a kg para el lote
+                double oroG = pcbKg * _distribuciones.GenerarNormal(0.15, 0.05);
+                double plataG = pcbKg * _distribuciones.GenerarNormal(0.30, 0.05);
+                oroLote += oroG / 1000.0;
+                plataLote += plataG / 1000.0;
                 pcbLote += pcbKg;
                 extraccionesLCD.Add(new ExtraccionUnidad
                 {
@@ -57,14 +57,14 @@ namespace Simulacion.Application.PlantServices
                 });
             }
 
-            // LED extracción de oro y plata por unidad PCB
+
             for (int i = 0; i < cantLED; i++)
             {
                 double pcbKg = _distribuciones.GenerarUniforme(0.1, 0.2);
-                double oroG = pcbKg * _distribuciones.GenerarNormal(0.15, 0.05); // en gramos
-                double plataG = pcbKg * _distribuciones.GenerarNormal(0.30, 0.05); // en gramos
-                oroLote += oroG / 1000.0; // convertir a kg para el lote
-                plataLote += plataG / 1000.0; // convertir a kg para el lote
+                double oroG = pcbKg * _distribuciones.GenerarNormal(0.15, 0.05);
+                double plataG = pcbKg * _distribuciones.GenerarNormal(0.30, 0.05);
+                oroLote += oroG / 1000.0;
+                plataLote += plataG / 1000.0;
                 pcbLote += pcbKg;
                 extraccionesLED.Add(new ExtraccionUnidad
                 {
@@ -101,3 +101,4 @@ namespace Simulacion.Application.PlantServices
     }
 
 }
+

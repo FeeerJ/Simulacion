@@ -1,4 +1,4 @@
-﻿using Simulacion.Domain.Interfaces;
+using Simulacion.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,28 +27,29 @@ namespace Simulacion.Application.Services
 
                 if (xStr.Length > k)
                 {
-                    // Tomamos las primeras k posiciones
+
                     string parteAltaStr = xStr.Substring(0, k);
-                    // Tomamos lo que queda a partir de k
+
                     string parteBajaStr = xStr.Substring(k);
 
                     long parteAlta = long.Parse(parteAltaStr);
                     long parteBaja = long.Parse(parteBajaStr);
 
-                    // Nueva semilla es la resta según tu regla
+
                     m = parteBaja - parteAlta;
                 }
                 else
                 {
-                    // Si el número es muy chico, el algoritmo podría converger o fallar
+
                     m = x;
                 }
 
                 double ri = (double)m / Math.Pow(10, k);
                 resultados.Add(ri);
-                /**/
+                
             }
             return resultados;
         }
     }
 }
+

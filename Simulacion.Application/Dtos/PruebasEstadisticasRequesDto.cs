@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +25,7 @@ public class PruebasEstadisticasRequesDto
     public class FrecuenciaRequestDto
     {
         public List<double> Numeros { get; set; } = new List<double>();
-        public int CantidadSubintervalos { get; set; } // Representa la variable 'x' del PDF
+        public int CantidadSubintervalos { get; set; }
         public double ChiCuadradoAlfa { get; set; }
     }
     public class PruebaFrecuenciaResultDto
@@ -41,7 +41,7 @@ public class PruebasEstadisticasRequesDto
     public class SerieRequestDto
     {
         public List<double> Numeros { get; set; } = new List<double>();
-        public int X { get; set; } // El número de subdivisiones del lado del cuadrado unitario
+        public int X { get; set; }
         public double ChiCuadradoAlfa { get; set; }
     }
     public class PruebaSerieResultDto
@@ -56,7 +56,7 @@ public class PruebasEstadisticasRequesDto
     public class KSRequestDto
     {
         public List<double> Numeros { get; set; } = new List<double>();
-        public double DAlfaN { get; set; } // Estadístico d alfa,n
+        public double DAlfaN { get; set; }
     }
     public class PruebaKSResultDto
     {
@@ -86,3 +86,4 @@ public class PruebasEstadisticasRequesDto
         public string Mensaje { get; set; } = string.Empty;
     }
 }
+

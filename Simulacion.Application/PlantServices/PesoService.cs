@@ -1,4 +1,4 @@
-﻿using Simulacion.Domain.Entities;
+using Simulacion.Domain.Entities;
 using Simulacion.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -70,3 +70,4 @@ namespace Simulacion.Application.PlantServices
 
     }
 }
+

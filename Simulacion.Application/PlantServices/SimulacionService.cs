@@ -47,45 +47,45 @@ namespace Simulacion.Application.PlantServices
             {
                 var resumenDia = new ResumenDia { Dia = dia };
 
-                // CORRECCIÓN: La reapertura se evalúa al INICIO de cada día,
-                // usando el stock remanente del día anterior (ya desmantelado).
-                // Antes se evaluaba al FINAL del mismo día en que saturó,
-                // lo que permitía reabrir sin que pasara un día completo de rechazo.
+
+
+
+
                 double areaInicial = (inventarioCRT * 0.21)
                                    + (inventarioLCD * 0.08)
                                    + (inventarioLED * 0.05);
 
                 if (politicaRechazoActiva && areaInicial <= capacidadAlmacenM3 * 0.5)
-                    politicaRechazoActiva = false; // Reapertura válida: el stock ya bajó al 50%
+                    politicaRechazoActiva = false;
 
-                // Stock al inicio del día (remanente del día anterior)
+
                 resumenDia.StockInicialCRT = inventarioCRT;
                 resumenDia.StockInicialLCD = inventarioLCD;
                 resumenDia.StockInicialLED = inventarioLED;
 
-                // ── RECEPCIÓN DE CAMIONETAS ──────────────────────────────────────
-                // Se evalúa el espacio DESPUÉS de cada camioneta para reflejar
-                // la mecánica de descuento de espacio en tiempo real del modelo verbal
+
+
+
                 for (int camion = 0; camion < camionetasPorDia; camion++)
                 {
-                    // CORRECCIÓN: Se calcula el área ocupada ANTES de recibir la camioneta.
-                    // Si ya está saturado, se rechaza sin procesar.
-                    // Antes, el área se calculaba DESPUÉS de agregar el inventario,
-                    // lo que permitía que la camioneta que causaba la saturación fuera procesada igual.
+
+
+
+
                     double areaActual = (inventarioCRT * 0.21)
                                       + (inventarioLCD * 0.08)
                                       + (inventarioLED * 0.05);
 
                     if (politicaRechazoActiva || areaActual >= capacidadAlmacenM3)
                     {
-                        // CORRECCIÓN: Se activa la política y se rechaza la camioneta actual
-                        // sin agregar su inventario al stock, evitando que el almacén supere su capacidad.
+
+
                         politicaRechazoActiva = true;
                         resumenDia.CamionetasRechazadas++;
-                        continue; // No procesar esta camioneta
+                        continue;
                     }
 
-                    // Solo se procesa si hay espacio disponible
+
                     var llegada = _llegada.ProcesarNuevaCamioneta();
                     resumenDia.TotalDescartados += llegada.Descartados;
 
@@ -97,8 +97,8 @@ namespace Simulacion.Application.PlantServices
                     inventarioLED += segmentacion.TotalLED;
                 }
 
-                // ── DESMANTELAMIENTO CRT ─────────────────────────────────────────
-                // 2 operarios, tiempo UNIF(20, 40) min según modelo verbal
+
+
                 int minutosDisponiblesCRT = 480 * operariosCRT;
                 int procesadosCRT = 0;
                 while (inventarioCRT > 0)
@@ -113,8 +113,8 @@ namespace Simulacion.Application.PlantServices
                     else break;
                 }
 
-                // ── DESMANTELAMIENTO LCD/LED ─────────────────────────────────────
-                // 3 operarios compartidos, tiempo UNIF(10, 15) min según modelo verbal
+
+
                 int minutosDisponiblesPlanas = 480 * operariosPlanas;
                 int procesadosLCD = 0;
                 while (inventarioLCD > 0)
@@ -142,14 +142,14 @@ namespace Simulacion.Application.PlantServices
                     else break;
                 }
 
-                // ── OCUPACIÓN AL FINAL DEL DÍA ───────────────────────────────────
-                // Se calcula el área final para el reporte
+
+
                 double areaFinal = (inventarioCRT * 0.21)
                                  + (inventarioLCD * 0.08)
                                  + (inventarioLED * 0.05);
 
-                // ── MÉTRICAS DE CUELLO DE BOTELLA ────────────────────────────────
-                // Utilización = minutos consumidos / minutos totales disponibles × 100
+
+
                 int minutosTotalesCRT = 480 * operariosCRT;
                 int minutosTotalesPlanas = 480 * operariosPlanas;
 
@@ -159,13 +159,13 @@ namespace Simulacion.Application.PlantServices
                 resumenDia.UtilizacionOperariosPlanas = Math.Round(
                     (double)(minutosTotalesPlanas - minutosDisponiblesPlanas) / minutosTotalesPlanas * 100, 2);
 
-                // ── STOCK FINAL Y OCUPACIÓN ──────────────────────────────────────
+
                 resumenDia.StockFinalCRT = inventarioCRT;
                 resumenDia.StockFinalLCD = inventarioLCD;
                 resumenDia.StockFinalLED = inventarioLED;
                 resumenDia.PorcentajeAlmacenamientoOcupado = Math.Round((areaFinal / capacidadAlmacenM3) * 100, 2);
 
-                // ── CÁLCULOS SOBRE LO PROCESADO ──────────────────────────────────
+
                 resumenDia.TotalDesmantelamiento = procesadosCRT + procesadosLCD + procesadosLED;
                 resumenDia.TotalCRT = procesadosCRT;
                 resumenDia.TotalLCD = procesadosLCD;
@@ -223,7 +223,7 @@ namespace Simulacion.Application.PlantServices
                     IngresosTotales = Math.Round(resumenPorDia.Sum(d => d.IngresosDia), 2),
                     CostosTotales = Math.Round(resumenPorDia.Sum(d => d.CostosDia), 2),
                     GananciaNeta = Math.Round(resumenPorDia.Sum(d => d.GananciaDia), 2),
-                    // ── NUEVOS: métricas de cuello de botella ──
+
                     UtilizacionPromedioCRT = Math.Round(
                         resumenPorDia.Average(d => d.UtilizacionOperariosCRT), 2),
                     UtilizacionPromedioPlanas = Math.Round(
@@ -237,3 +237,4 @@ namespace Simulacion.Application.PlantServices
         }
     }
 }
+

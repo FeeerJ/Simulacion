@@ -32,34 +32,34 @@ namespace Simulacion.Application.PlantServices
             double costosDia = 0;
             bool huboDespacho = false;
 
-            // ingreso por refurbishment
+
             ingresosDia += refurbishment * 100;
 
-            // acumula PCB
+
             _pcbAcumuladoKg += pcbKg;
 
-            // materiales comunes del día 
+
             double comunesDia = pesoTotalKg - cobreKg - pcbKg;
             _pesoComunesAcumuladoKg += comunesDia;
 
-            // costo por sustancias tóxicas
+
             costosDia += costoToxicos;
 
-            // flete genérico los días 15 y 30
+
             if ((dia == 15 || dia == 30) && _pesoComunesAcumuladoKg > 0)
             {
-                costosDia += 120; // Costo logístico
-                _pesoComunesAcumuladoKg = 0; // se despacha
+                costosDia += 120;
+                _pesoComunesAcumuladoKg = 0;
                 huboDespacho = true;
             }
 
-            // Al día 30 evaluar PCB
+
             if (dia == 30)
             {
                 if (_pcbAcumuladoKg >= 50)
                     ingresosDia += 8500;
                 else
-                    costosDia += 350; // costo de mantener
+                    costosDia += 350;
             }
 
             _ingresosTotales += ingresosDia;
@@ -80,3 +80,4 @@ namespace Simulacion.Application.PlantServices
         }
     }
 }
+

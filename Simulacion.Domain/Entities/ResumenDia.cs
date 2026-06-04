@@ -19,7 +19,7 @@ namespace Simulacion.Domain.Entities
         public double PesoToxiKg { get; set; }
         public double CostoDisposicionToxico { get; set; }
 
-        // Nuevas propiedades para inventario y cuello de botella
+
         public int StockInicialCRT { get; set; }
         public int StockInicialLCD { get; set; }
         public int StockInicialLED { get; set; }
@@ -37,10 +37,11 @@ namespace Simulacion.Domain.Entities
         public double GananciaDia { get; set; }     
         public double PCBacumuladoKg { get; set; }  
         
-        public double UtilizacionOperariosCRT { get; set; }    // % uso operarios CRT en el día
-        public double UtilizacionOperariosPlanas { get; set; } // % uso operarios LCD/LED en el día
-        public int CamionetasRechazadas { get; set; }          // camionetas rechazadas por almacén lleno
+        public double UtilizacionOperariosCRT { get; set; }
+        public double UtilizacionOperariosPlanas { get; set; }
+        public int CamionetasRechazadas { get; set; }
         public bool HuboDespachoFlete { get; set; }
     }
 }
+
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +14,7 @@ namespace Simulacion.Domain.Interfaces
         double GenerarExponencial(double media);
         double GenerarUniforme(double min, double max);
         bool EvaluarProbabilidad(double probabilidadExito);
-        string DeterminarTecnologia(); // Para el 15% CRT, 50% LCD, 35% LED
+        string DeterminarTecnologia();
     }
 }
+

@@ -19,3 +19,4 @@ namespace Simulacion.Domain.Entities
         public bool HuboDespachoFlete { get; set; }
     }
 }
+
